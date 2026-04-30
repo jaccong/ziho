@@ -3,118 +3,99 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from get_data import get_price
 
-# ===================== 配置 =====================
-INPUT_FILE = "all_history.json"
+# ========== 配置 ==========
+INPUT_FILE  = "all_history.json"
 OUTPUT_FILE = "10days_data.json"
+WINDOW_NUM  = 10
 MAX_WORKERS = 20
-WINDOW_DAYS = 10   # 固定最近10个交易日
 
-# ===================== 1. 加载原始数据 =====================
-print("📦 加载 all_history.json ...")
+# ========== 1. 加载原始数据 ==========
+print("📦 加载原始行情文件...")
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
-    raw_data = json.load(f)
+    raw = json.load(f)
 
-all_days_list = raw_data["days"]
-# 从文件末尾倒取 10 个真实交易日（完全跟着你json走，不自己算日期）
-latest_10_day_objs = all_days_list[-WINDOW_DAYS:]
-# 窗口内的日期数组（从小到大）
-window_date_set = {d["date"] for d in latest_10_day_objs}
-window_start_date = latest_10_day_objs[0]["date"]
-window_end_date = latest_10_day_objs[-1]["date"]
+# 只截取【最新10个交易日】，直接砍掉前面所有旧日期
+last_10_days = raw["days"][-WINDOW_NUM:]
+date_list = [item["date"] for item in last_10_days]
 
-print(f"✅ 锁定最近 {WINDOW_DAYS} 个交易日窗口：")
-print(f"📅 窗口起始：{window_start_date}")
-print(f"📅 窗口结束：{window_end_date}")
+print(f"✅ 已锁定最新 {WINDOW_NUM} 个交易日：")
+print(f"📅 日期范围：{date_list[0]} ~ {date_list[-1]}")
 
-# 全部日期映射：date -> 当天股票
-date_stock_map = {d["date"]: d["stocks"] for d in all_days_list}
-
-# ===================== 2. 读取历史缓存，避免重复拉取 =====================
-cache_price_map = {}
+# ========== 2. 加载已有缓存，避免重复抓取 ==========
+cache = {}
 if os.path.exists(OUTPUT_FILE):
     try:
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-            old_out = json.load(f)
-        # 从旧输出里提取每只股票已有的 price_10d
-        for day in old_out["days"]:
+            old = json.load(f)
+        for day in old["days"]:
             for stock in day["stocks"]:
-                code = stock["code"]
                 if "price_10d" in stock:
-                    cache_price_map[code] = stock["price_10d"]
-        print("✅ 加载历史价格缓存，已有数据自动跳过")
+                    cache[stock["code"]] = stock["price_10d"]
+        print("✅ 读取历史缓存，已有价格自动跳过")
     except:
-        cache_price_map = {}
+        cache = {}
 
-# ===================== 3. 统计每只股票首次上榜日期 =====================
-stock_first_appear = {}
-for day in all_days_list:
-    dt = day["date"]
-    for s in day["stocks"]:
+# ========== 3. 记录每只股票在10天窗口内首次出现日期 ==========
+stock_first = {}
+for day_item in last_10_days:
+    d = day_item["date"]
+    for s in day_item["stocks"]:
         code = s["code"]
-        if code not in stock_first_appear:
-            stock_first_appear[code] = dt
+        if code not in stock_first:
+            stock_first[code] = d
 
-total_stock = len(stock_first_appear)
-print(f"📊 窗口内涉及个股总数：{total_stock}")
+print(f"📊 窗口内共需处理个股：{len(stock_first)} 只")
 
-# ===================== 4. 单只股票拉取逻辑 =====================
-def task_fetch_stock(code):
-    first_dt = stock_first_appear[code]
-    prices = cache_price_map.get(code, {})
+# ========== 4. 单只股票抓取逻辑 ==========
+def fetch(code):
+    first_dt = stock_first[code]
+    prices = cache.get(code, {})
 
-    # 规则：
-    # 只取：首次上榜日期 ～ 窗口结束日期
-    # 且只在最近10个交易日窗口内
-    need_dates = []
-    for d_obj in latest_10_day_objs:
-        d = d_obj["date"]
-        if d >= first_dt:
-            need_dates.append(d)
-
-    # 逐个判断：已有有效价格就跳过，没有才请求
-    for dt in need_dates:
-        if dt in prices and prices[dt] not in (None, 0, 0.0, ""):
+    # 只遍历这10天，从个股首次出现那天往后取
+    for dt in date_list:
+        # 还没到它上市那天，直接跳过
+        if dt < first_dt:
             continue
+        # 已有有效价格，跳过
+        if dt in prices and prices[dt] not in (0, 0.0, None, ""):
+            continue
+        # 接口抓取
         try:
             prices[dt] = get_price(code, dt)
-        except Exception:
+        except:
             prices[dt] = 0.0
-
     return code, prices
 
-# ===================== 5. 多线程并发拉取 =====================
-print(f"\n🚀 开始多线程拉取行情...")
-final_price_map = {}
+# ========== 5. 多线程批量抓取 ==========
+print("\n🚀 开始多线程抓取行情...")
+price_map = {}
 with ThreadPoolExecutor(MAX_WORKERS) as exe:
-    results = exe.map(task_fetch_stock, stock_first_appear.keys())
-    for code, p_map in results:
-        final_price_map[code] = p_map
+    for code, p in exe.map(fetch, stock_first.keys()):
+        price_map[code] = p
 
-print("✅ 全部行情拉取完成")
-
-# ===================== 6. 按原格式组装新JSON =====================
-out_data = {
-    "month": raw_data.get("month", ""),
+# ========== 6. 只生成最新10天的JSON（彻底去掉4月1日旧数据） ==========
+out = {
+    "month": raw.get("month", ""),
     "days": []
 }
 
-# 原样复刻所有天数结构，只给个股追加 price_10d
-for day in all_days_list:
+# 只循环最后10天，不碰前面旧数据
+for day_item in last_10_days:
     new_day = {
-        "date": day["date"],
+        "date": day_item["date"],
         "stocks": []
     }
-    for s in day["stocks"]:
+    for s in day_item["stocks"]:
         new_stock = s.copy()
-        # 只回填我们窗口内计算好的价格区间
-        new_stock["price_10d"] = final_price_map.get(s["code"], {})
+        new_stock["price_10d"] = price_map.get(s["code"], {})
         new_day["stocks"].append(new_stock)
-    out_data["days"].append(new_day)
+    out["days"].append(new_day)
 
-# ===================== 7. 保存文件 =====================
+# ========== 7. 保存 ==========
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    json.dump(out_data, f, ensure_ascii=False, indent=2)
+    json.dump(out, f, ensure_ascii=False, indent=2)
 
-print(f"\n✅ 任务结束！已输出：{OUTPUT_FILE}")
-print(f"📌 严格遵循：只取你文件里最后10个交易日窗口")
-print(f"📌 每只个股只从自身上榜日往后取，不做空日期请求")
+print("\n✅ 完成！")
+print(f"📁 输出文件：{OUTPUT_FILE}")
+print(f"✅ 只保留最新10个交易日，已剔除旧数据")
+print(f"✅ 每只个股仅从自身出现日期往后取值，不浪费请求")
