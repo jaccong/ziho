@@ -3,7 +3,7 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 
 # 从你的文件导入价格接口
-from get_data import get_stock_price
+from get_data import get_price
 
 # ===================== 配置 =====================
 INPUT_FILE = "all_history.json"
@@ -46,7 +46,7 @@ def fetch_if_missing(code):
             continue
 
         try:
-            prices[dt] = get_stock_price(code, dt)
+            prices[dt] = get_price(code, dt)
         except:
             prices[dt] = 0.0
 
