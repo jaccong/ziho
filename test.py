@@ -1,7 +1,7 @@
 import requests
 import json
 
-# ===================== 【测试单日】2026-04-01 =====================
+# 日期
 date_str = "2026-04-01"
 API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
 
@@ -16,9 +16,10 @@ HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
 }
 
-# ===================== 1. 抓取涨停连板列表 =====================
+# ===================== 1. 抓取连板数据 =====================
 print("【1/2】抓取连板数据...")
-zhangting_data = {
+
+post_data = {
     "Date": date_str,
     "DeviceID": "",
     "PhoneOSNew": "2",
@@ -31,27 +32,22 @@ zhangting_data = {
     "c": "FuPanLa"
 }
 
-res = requests.post(API_URL, headers=HEADERS, data=zhangting_data, timeout=10)
-print("状态码:", res.status_code)
-print("返回:", res.text)
+res = requests.post(API_URL, headers=HEADERS, data=post_data, timeout=10)
+data = res.json()
 
-# 如果这一步返回空/无data，后面不用测了
-try:
-    zt = res.json()
-except:
-    exit("❌ 连板接口解析失败")
+# ✅ 正确字段：StockList
+if "StockList" not in data or len(data["StockList"]) == 0:
+    exit("❌ 无股票数据")
 
-if "data" not in zt or not zt["data"]:
-    exit("❌ 当日无涨停数据")
-
-print("✅ 成功获取股票列表，数量:", len(zt["data"]))
+stock_list = data["StockList"]
+print(f"✅ 成功获取 {len(stock_list)} 只涨停股票！")
 
 # ===================== 2. 抓取第一只股票价格 =====================
-stock = zt["data"][0]
-code = stock["StockID"]
-name = stock["StockName"]
+stock = stock_list[0]
+code = stock[0]     # 股票代码
+name = stock[1]    # 股票名称
 
-print("\n【2/2】抓取价格 =>", code, name)
+print(f"\n【2/2】抓取价格：{code} {name}")
 
 price_data = {
     "Day": date_str,
@@ -68,11 +64,22 @@ price_data = {
 }
 
 res2 = requests.post(API_URL, headers=HEADERS, data=price_data, timeout=10)
-print("价格接口返回:", res2.text)
+pj = res2.json()
 
-try:
-    pj = res2.json()
-    price = round(float(pj["real"]["last_px"]), 2)
-    print("✅ 最终价格:", price)
-except:
-    print("❌ 价格获取失败")
+price = round(float(pj["real"]["last_px"]), 2)
+print(f"✅ 成功！价格：{price}")
+
+# ===================== 3. 输出合并结果 =====================
+final = {
+    "date": date_str,
+    "stocks": [
+        {
+            "code": code,
+            "name": name,
+            "close": price
+        }
+    ]
+}
+
+print("\n【最终输出】")
+print(json.dumps(final, ensure_ascii=False, indent=2))
