@@ -78,7 +78,7 @@ if __name__ == "__main__":
             {
                 "code": s[0],
                 "name": s[1],
-                "lianban": s[3],
+                "lianban": s[2],
                 "sector": s[5] if len(s) >= 6 else "未知",
                 "close": price_map.get(s[0], 0.0)
             } for s in stock_list
