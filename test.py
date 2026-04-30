@@ -1,9 +1,6 @@
 import requests
-import json
 
-# 测试日期（改成你要测的）
 day = "2026-04-01"
-
 API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
 
 HEADERS = {
@@ -12,12 +9,12 @@ HEADERS = {
     "Accept": "*/*",
 }
 
+# 正确连板接口参数
 data = {
     "Day": day,
     "DeviceID": "",
     "PhoneOSNew": "2",
     "Red": "1",
-    "StockID": "",
     "Token": "",
     "UserID": "",
     "VerSion": "1.0.4",
@@ -27,10 +24,7 @@ data = {
 }
 
 print("测试日期:", day)
-print("发送请求...")
-
-res = requests.post(API_URL, headers=HEADERS, data=data, timeout=10)
-
+res = requests.post(API_URL, headers=HEADERS, data=data, timeout=15)
 print("状态码:", res.status_code)
 print("响应长度:", len(res.text))
-print("完整响应:", res.text)
+print("完整响应:\n", res.text)
