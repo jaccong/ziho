@@ -5,9 +5,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 TODAY = str(date.today())
 
-# 🔴 完全保留你原始请求头，一字不动
-HEADERS = {
-    "Host": "apphwhq.kaipanhong.com",
+# ========= 完全原样保留你的请求头，一字不改 =========
+BASE_HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     "Connection": "keep-alive",
     "Accept": "*/*",
@@ -16,20 +15,21 @@ HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
 }
 
-# 接口地址配置
+# 接口配置
 URL_TODAY = "https://apphwhq.kaipanhong.com/w1/api/index.php"
+HOST_TODAY = "apphwhq.kaipanhong.com"
+
 URL_HIST  = "https://apphis.kaipanhong.com/w1/api/index.php"
+HOST_HIST  = "apphis.kaipanhong.com"
 
 # ==============================
-# 根据日期自动获取涨停列表
-# 今日走今日URL+参数，历史走历史URL+Host+DAY参数
+# 获取涨停列表：传日期自动判断
 # ==============================
-def get_zt_by_date(query_date):
+def get_zt_list(query_date):
     if query_date == TODAY:
         url = URL_TODAY
-        host = "apphwhq.kaipanhong.com"
+        host = HOST_TODAY
         data = {
-            "Date": query_date,
             "DeviceID": "",
             "PhoneOSNew": "2",
             "Red": "1",
@@ -42,42 +42,42 @@ def get_zt_by_date(query_date):
         }
     else:
         url = URL_HIST
-        host = "apphis.kaipanhong.com"
+        host = HOST_HIST
         data = {
             "Date": query_date,
-            "DAY": query_date,
             "DeviceID": "",
             "PhoneOSNew": "2",
             "Red": "1",
             "Token": "",
             "UserID": "",
             "VerSion": "1.0.4",
-            "a": "",   # 你自己填历史涨停a
+            "a": "GetZhangTingTianTi",  
             "apiv": "w45",
-            "c": ""    # 你自己填历史涨停c
+            "c": "FuPanLa" 
         }
-    # 切换Host，其余Header完全沿用你的原版
-    hds = HEADERS.copy()
-    hds["Host"] = host
+
+    # 仅复制基础头，只改Host，其他全部原样
+    headers = BASE_HEADERS.copy()
+    headers["Host"] = host
+
     try:
-        res = requests.post(url, headers=hds, data=data, timeout=15)
+        res = requests.post(url, headers=headers, data=data, timeout=15)
         return res.json()
     except:
         return None
 
 # ==============================
-# 根据日期自动获取股价
-# 今日/历史自动切URL、Host、历史带DAY
+# 获取个股价格：传日期自动判断
 # ==============================
-def get_price_by_date(code, query_date):
+def get_price(code, query_date):
     if query_date == TODAY:
         url = URL_TODAY
-        host = "apphwhq.kaipanhong.com"
+        host = HOST_TODAY
         data = {
+            "StockID": code,
             "DeviceID": "",
             "PhoneOSNew": "2",
             "Red": "1",
-            "StockID": code,
             "Token": "",
             "UserID": "",
             "VerSion": "1.0.4",
@@ -87,24 +87,27 @@ def get_price_by_date(code, query_date):
         }
     else:
         url = URL_HIST
-        host = "apphis.kaipanhong.com"
+        host = HOST_HIST
         data = {
+            "StockID": code,
+            "DAY": query_date,
             "DeviceID": "",
             "PhoneOSNew": "2",
             "Red": "1",
-            "StockID": code,
-            "DAY": query_date,
             "Token": "",
             "UserID": "",
             "VerSion": "1.0.4",
-            "a": "",   # 你自己填历史价格a
+            "a": "GetStockPanKou", 
             "apiv": "w45",
-            "c": ""    # 你自己填历史价格c
+            "c": "StockL2History"   
         }
-    hds = HEADERS.copy()
-    hds["Host"] = host
+
+    # 只动态替换Host，其余Header、UA完全不动
+    headers = BASE_HEADERS.copy()
+    headers["Host"] = host
+
     try:
-        j = requests.post(url, headers=hds, data=data, timeout=10).json()
+        j = requests.post(url, headers=headers, data=data, timeout=10).json()
         return round(float(j["real"]["last_px"]), 2)
     except:
         return 0.0
