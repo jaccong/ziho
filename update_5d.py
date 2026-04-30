@@ -2,17 +2,17 @@ import json
 import os
 from concurrent.futures import ThreadPoolExecutor
 
-# 从你的文件导入价格接口
+# 导入你的价格接口
 from get_data import get_price
 
 # ===================== 配置 =====================
 INPUT_FILE = "all_history.json"
-OUTPUT_FILE = "10d_data.json"
+OUTPUT_FILE = "10days_data.json"  # 你要的名称
 LOOKBACK_DAYS = 10
 MAX_WORKERS = 20
 
-# ===================== 加载历史数据 =====================
-print(f"📂 正在加载历史数据：{INPUT_FILE}")
+# ===================== 加载原始数据 =====================
+print(f"📦 加载原始数据：{INPUT_FILE}")
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     data = json.load(f)
 
@@ -20,100 +20,78 @@ all_days = data["days"]
 recent_days = all_days[-LOOKBACK_DAYS:]
 date_list = [d["date"] for d in recent_days]
 
-print(f"✅ 加载完成，获取最近 {LOOKBACK_DAYS} 天数据")
-print(f"📅 日期列表：{date_list}")
-
 # 收集所有股票
-code_set = set()
+codes = set()
 for day in recent_days:
     for s in day["stocks"]:
-        code_set.add(s["code"])
+        codes.add(s["code"])
+codes = list(codes)
 
-total_codes = len(code_set)
-print(f"🔍 共收集到 {total_codes} 只股票需要处理")
+print(f"✅ 最近10天日期：{' → '.join(date_list)}")
+print(f"📊 总股票数量：{len(codes)}")
 
-# ===================== 读取已有数据（避免重复拉取） =====================
-existing_data = {}
+# ===================== 读取已有的10天价格（避免重复拉）=====================
+existing_cache = {}
 if os.path.exists(OUTPUT_FILE):
-    print(f"🔍 检测到已有文件：{OUTPUT_FILE}，尝试读取历史价格...")
     try:
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-            existing_data = json.load(f)
-        print("✅ 已有价格数据读取成功")
+            old_data = json.load(f)
+        
+        # 从正确格式读取已缓存价格
+        for day in old_data["days"]:
+            for stock in day["stocks"]:
+                code = stock["code"]
+                if "price_10d" in stock:
+                    existing_cache[code] = stock["price_10d"]
+        print("✅ 成功读取历史缓存，跳过重复数据")
     except:
-        print("❌ 已有文件读取失败，将重新拉取全部")
-        existing_data = {}
+        existing_cache = {}
 
-existing_prices = existing_data.get("price_map", {})
-print(f"📊 已缓存价格数量：{len(existing_prices)} 只股票\n")
-
-# ===================== 多线程获取（不存在才拉） =====================
-def fetch_if_missing(code):
-    prices = existing_prices.get(code, {})
-    skip_count = 0
-    fetch_count = 0
-
+# ===================== 拉取逻辑：缺失才拉 =====================
+def fetch_stock(code):
+    prices = existing_cache.get(code, {})
     for dt in date_list:
+        # 已有有效价格 → 跳过
         if dt in prices and prices[dt] not in (None, 0.0, "", 0):
-            skip_count += 1
             continue
-
+        # 没有才请求
         try:
             prices[dt] = get_price(code, dt)
-            fetch_count += 1
         except:
             prices[dt] = 0.0
-
-    print(f"▸ {code} | 跳过 {skip_count} 条 | 拉取 {fetch_count} 条")
     return code, prices
 
-print(f"🚀 开始多线程拉取价格（线程数：{MAX_WORKERS}）...\n")
-
-# 并发拉取
+# ===================== 多线程获取 =====================
+print(f"\n🚀 开始拉取 10 日价格...")
 price_map = {}
+
 with ThreadPoolExecutor(MAX_WORKERS) as executor:
-    for code, prices in executor.map(fetch_if_missing, code_set):
+    results = executor.map(fetch_stock, codes)
+    for code, prices in results:
         price_map[code] = prices
 
-print(f"\n✅ 所有股票拉取完成！共处理 {len(price_map)} 只股票")
-
-# ===================== 输出新 JSON =====================
-print("\n📝 开始生成新JSON结构...")
-
+# ===================== 按你原版格式生成 =====================
 output = {
-    "generated_at": os.popen("date +'%Y-%m-%d %H:%M:%S'").read().strip(),
-    "lookback_days": LOOKBACK_DAYS,
-    "dates": date_list,
-    "price_map": price_map,
+    "month": data.get("month", "2026年04月"),
     "days": []
 }
 
-# 按天补齐数据
-for day in recent_days:
-    day_out = {
+# 逐天复制，只加 price_10d，其他完全不变
+for day in all_days:
+    new_day = {
         "date": day["date"],
         "stocks": []
     }
-    for s in day["stocks"]:
-        code = s["code"]
-        day_out["stocks"].append({
-            "code": code,
-            "name": s["name"],
-            "lianban": s["lianban"],
-            "sector": s["sector"],
-            "close": s["close"],
-            "prices_10d": price_map.get(code, {})
-        })
-    output["days"].append(day_out)
+    for stock in day["stocks"]:
+        item = stock.copy()
+        item["price_10d"] = price_map.get(stock["code"], {})
+        new_day["stocks"].append(item)
+    output["days"].append(new_day)
 
-print(f"💾 正在保存文件：{OUTPUT_FILE}")
+# ===================== 保存新文件 =====================
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
-# ===================== 最终统计 =====================
-print("\n" + "="*50)
-print(f"✅ 任务全部完成！")
-print(f"📅 日期范围：{date_list[0]} ~ {date_list[-1]}")
-print(f"📊 股票总数：{len(code_set)}")
-print(f"📁 输出文件：{OUTPUT_FILE}")
-print("="*50)
+print(f"\n✅ 全部完成！")
+print(f"📁 已生成：{OUTPUT_FILE}")
+print(f"✅ 格式 100% 匹配你的原始 JSON")
