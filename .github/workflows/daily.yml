@@ -1,0 +1,34 @@
+name: 每日涨停自动更新
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间 23:00 = UTC 15:00，周一～周五
+    - cron: '0 15 * * 1-5'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 执行每日抓取
+        run: python daily_update.py
+
+      - name: 自动提交入库
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add *.json
+          git commit -m "🤖 每日自动更新：$(date +%Y-%m-%d)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
