@@ -21,9 +21,9 @@ data = {
     "Token": "",
     "UserID": "",
     "VerSion": "1.0.4",
-    "a": "GetZTList",
+    "a": "GetZhangTingTianTi",
     "apiv": "w45",
-    "c": "Stock"
+    "c": "FuPanLa"
 }
 
 print("测试日期:", day)
