@@ -90,7 +90,7 @@ def get_price(code, query_date):
         host = HOST_HIST
         data = {
             "StockID": code,
-            "DAY": query_date,
+            "Day": query_date,
             "DeviceID": "",
             "PhoneOSNew": "2",
             "Red": "1",
