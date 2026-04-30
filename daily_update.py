@@ -84,8 +84,8 @@ if __name__ == "__main__":
         ]
     }
 
-    with open(f"{TODAY}_zhangting.json", "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+    ##with open(f"{TODAY}_zhangting.json", "w", encoding="utf-8") as f:
+        ##json.dump(result, f, ensure_ascii=False, indent=2)
 
     try:
         with open("all_history.json", "r", encoding="utf-8") as f:
