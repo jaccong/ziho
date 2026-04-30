@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 API_URL = "https://apphiskaipanhongcom/w1/api/indexphp"
 YEAR = 2026
 MONTH = 4
-MAX_WORKERS = 8
+MAX_WORKERS = 15
 
 # 完整抓包原生Header
 HEADERS = {
