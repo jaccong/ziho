@@ -8,7 +8,7 @@ API_URL = "https://apphwhq.kaipanhong.com/w1/api/index.php"
 MAX_WORKERS = 10
 
 HEADERS = {
-    "Host": "apphis.kaipanhong.com",
+    "Host": "apphwhq.kaipanhong.com",
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     "Connection": "keep-alive",
     "Accept": "*/*",
@@ -38,7 +38,6 @@ def fetch_daily_zt():
 
 def fetch_price(code):
     data = {
-        "Day": TODAY,
         "DeviceID": "",
         "PhoneOSNew": "2",
         "Red": "1",
@@ -46,9 +45,9 @@ def fetch_price(code):
         "Token": "",
         "UserID": "",
         "VerSion": "1.0.4",
-        "a": "GetStockPanKou",
+        "a": "GetStockPanKou_Narrow",
         "apiv": "w45",
-        "c": "StockL2History"
+        "c": "StockL2Data"
     }
     try:
         j = requests.post(API_URL, headers=HEADERS, data=data, timeout=10).json()
