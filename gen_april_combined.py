@@ -9,9 +9,10 @@ YEAR = 2026
 MONTH = 4
 MAX_WORKERS = 10
 
+# 🔥 修复：去掉中文，解决编码报错！
 HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-    "User-Agent": "开盘红/9 CFNetwork/1399 Darwin/22.1.0",
+    "User-Agent": "Kaipanhong/9 CFNetwork/1399 Darwin/22.1.0",
     "Accept": "*/*",
 }
 
@@ -25,9 +26,9 @@ stats = {
     "fail_price": 0
 }
 
-# ===================== 【关键】抓取连板数据（1:1 复制你能跑的PHP参数） =====================
+# ===================== 抓取连板数据 =====================
 def fetch_zt_data(day_str):
-    print(f"\n[DEBUG] 开始抓取连板数据 | 日期: {day_str}")
+    print(f"\n[DEBUG] 抓取连板 | 日期: {day_str}")
 
     post_data = {
         "Day": day_str,
@@ -43,8 +44,6 @@ def fetch_zt_data(day_str):
         "c": "Stock"
     }
 
-    print(f"[DEBUG] POST 参数: {post_data}")
-
     try:
         response = requests.post(
             API_URL,
@@ -53,20 +52,16 @@ def fetch_zt_data(day_str):
             timeout=15
         )
 
-        print(f"[DEBUG] HTTP 状态码: {response.status_code}")
-        print(f"[DEBUG] 响应长度: {len(response.text)}")
-        print(f"[DEBUG] 响应内容: {response.text[:500]}...")
+        print(f"[DEBUG] 状态码: {response.status_code}")
+        print(f"[DEBUG] 响应前500字符: {response.text[:500]}")
 
         if response.status_code != 200:
-            print(f"[ERROR] HTTP 请求失败")
             return None
 
-        zt_data = response.json()
-        print(f"[DEBUG] 解析JSON成功")
-        return zt_data
+        return response.json()
 
     except Exception as e:
-        print(f"[ERROR] 抓取异常: {str(e)}")
+        print(f"[ERROR] 抓取失败: {str(e)}")
         return None
 
 # ===================== 抓取价格 =====================
@@ -102,25 +97,24 @@ def process_day(day_str):
     zt = fetch_zt_data(day_str)
 
     if not zt:
-        print(f"❌ 连板数据 = 空，跳过")
+        print(f"❌ 连板数据为空")
         stats["fail_days"] += 1
         return None
 
     if "StockList" not in zt:
-        print(f"❌ 返回数据没有 StockList 字段")
-        print(f"[DEBUG] 完整返回: {json.dumps(zt, ensure_ascii=False, indent=2)}")
+        print(f"❌ 返回数据无 StockList")
         stats["fail_days"] += 1
         return None
 
     stock_list = zt["StockList"]
     if len(stock_list) == 0:
-        print(f"⏭️ 当日无涨停股票")
+        print(f"⏭️ 无涨停股票")
         stats["fail_days"] += 1
         return None
 
     total = len(stock_list)
     stats["total_stocks"] += total
-    print(f"\n✅ 成功获取连板列表 | 股票数量: {total}")
+    print(f"\n✅ 获取股票数量: {total}")
 
     # 多线程获取价格
     futures = []
@@ -142,17 +136,13 @@ def process_day(day_str):
             stats["fail_price"] += 1
             print(f"   ❌ {code} {name} → 失败")
 
-    # 合并结果
-    day_result = {
-        "date": day_str,
-        "stocks": []
-    }
-
+    # 合并数据
+    day_result = {"date": day_str, "stocks": []}
     for item in stock_list:
         code = item[0]
         name = item[1]
-        lianban = item[3] if len(item) >= 4 else 0
-        sector = item[5] if len(item) >= 6 else "未知"
+        lianban = item[3] if len(item) >=4 else 0
+        sector = item[5] if len(item) >=6 else "未知"
         close = price_map.get(code, 0.0)
 
         day_result["stocks"].append({
@@ -164,28 +154,22 @@ def process_day(day_str):
         })
 
     stats["success_days"] += 1
-    print(f"\n✅ 日期 {day_str} 处理完成！")
+    print(f"\n✅ {day_str} 处理完成")
     return day_result
 
 # ===================== 日期列表 =====================
 def get_april_days():
-    days = []
-    for d in range(1, 31):
-        days.append(f"{YEAR}-{MONTH:02d}-{d:02d}")
-    return days
+    return [f"{YEAR}-{MONTH:02d}-{d:02d}" for d in range(1, 31)]
 
 # ===================== 主程序 =====================
 if __name__ == "__main__":
-    print("")
     print("==================================================")
-    print("🚀 4月连板+价格 全自动抓取（调试增强版）")
+    print("🚀 4月连板+价格 全自动抓取（已修复编码错误）")
     print("==================================================")
 
     days = get_april_days()
     stats["total_days"] = len(days)
-    print(f"🗓️ 总日期数: {len(days)}")
-    print(f"🌐 接口地址: {API_URL}")
-    print("==================================================")
+    print(f"🗓️ 总日期: {len(days)}")
 
     results = []
     with ThreadPoolExecutor(max_workers=3) as executor:
@@ -198,7 +182,7 @@ if __name__ == "__main__":
     # 排序
     results = sorted(results, key=lambda x: x["date"])
 
-    # 输出最终文件
+    # 生成最终JSON
     final_data = {
         "month": "2026年04月",
         "days": results
@@ -207,9 +191,9 @@ if __name__ == "__main__":
     with open("april_combined.json", "w", encoding="utf-8") as f:
         json.dump(final_data, f, ensure_ascii=False, indent=2)
 
-    # 最终报告
+    # 报告
     print("\n\n==================================================")
-    print("📋 最终执行报告")
+    print("📋 执行完成报告")
     print("==================================================")
     print(f"总日期: {stats['total_days']}")
     print(f"成功日期: {stats['success_days']}")
