@@ -1,91 +1,73 @@
 import json
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime
 
-# ===================== 固定配置 =====================
+# ===================== 配置 =====================
 API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
 YEAR = 2026
 MONTH = 4
 MAX_WORKERS = 10
 
-# 🔥 修复：去掉中文，解决编码报错！
 HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     "User-Agent": "Kaipanhong/9 CFNetwork/1399 Darwin/22.1.0",
     "Accept": "*/*",
 }
 
-# ===================== 统计 =====================
+# 统计
 stats = {
-    "total_days": 0,
-    "success_days": 0,
-    "fail_days": 0,
-    "total_stocks": 0,
-    "success_price": 0,
-    "fail_price": 0
+    "total_days": 0, "success_days": 0, "fail_days": 0,
+    "total_stocks": 0, "success_price": 0, "fail_price": 0
 }
 
-# ===================== 抓取连板数据 =====================
+# ===================== 抓取连板数据（终极稳定） =====================
 def fetch_zt_data(day_str):
     print(f"\n[DEBUG] 抓取连板 | 日期: {day_str}")
 
     post_data = {
-        "Day": day_str,
-        "DeviceID": "",
-        "PhoneOSNew": "2",
-        "Red": "1",
-        "StockID": "",
-        "Token": "",
-        "UserID": "",
-        "VerSion": "1.0.4",
-        "a": "GetZTList",
-        "apiv": "w45",
-        "c": "Stock"
+        "Day": day_str, "DeviceID": "", "PhoneOSNew": "2", "Red": "1",
+        "StockID": "", "Token": "", "UserID": "", "VerSion": "1.0.4",
+        "a": "GetZTList", "apiv": "w45", "c": "Stock"
     }
 
     try:
         response = requests.post(
-            API_URL,
-            headers=HEADERS,
-            data=post_data,
-            timeout=15
+            API_URL, headers=HEADERS, data=post_data, timeout=15
         )
 
         print(f"[DEBUG] 状态码: {response.status_code}")
-        print(f"[DEBUG] 响应前500字符: {response.text[:500]}")
+        raw = response.text.strip()
+        print(f"[DEBUG] 原始响应长度: {len(raw)}")
+        print(f"[DEBUG] 原始响应: {raw[:800]}")  # 打印完整内容调试
 
-        if response.status_code != 200:
+        if not raw:
+            print("[ERROR] 响应为空！")
             return None
 
-        return response.json()
+        # 安全解析JSON
+        return json.loads(raw)
 
+    except json.JSONDecodeError:
+        print("[ERROR] 不是合法JSON！")
+        return None
     except Exception as e:
-        print(f"[ERROR] 抓取失败: {str(e)}")
+        print(f"[ERROR] 请求异常: {str(e)}")
         return None
 
 # ===================== 抓取价格 =====================
 def fetch_price(day_str, code, name):
     post_data = {
-        "Day": day_str,
-        "DeviceID": "",
-        "PhoneOSNew": "2",
-        "Red": "1",
-        "StockID": code,
-        "Token": "",
-        "UserID": "",
-        "VerSion": "1.0.4",
-        "a": "GetStockPanKou",
-        "apiv": "w45",
-        "c": "StockL2History"
+        "Day": day_str, "DeviceID": "", "PhoneOSNew": "2", "Red": "1",
+        "StockID": code, "Token": "", "UserID": "", "VerSion": "1.0.4",
+        "a": "GetStockPanKou", "apiv": "w45", "c": "StockL2History"
     }
 
     try:
         r = requests.post(API_URL, headers=HEADERS, data=post_data, timeout=10)
-        j = r.json()
+        j = json.loads(r.text.strip())
         price = round(float(j.get("real", {}).get("last_px", 0)), 2)
         return code, name, price, True
-    except Exception as e:
+    except:
         return code, name, 0.0, False
 
 # ===================== 处理单日 =====================
@@ -95,14 +77,12 @@ def process_day(day_str):
     print(f"==================================================")
 
     zt = fetch_zt_data(day_str)
-
     if not zt:
-        print(f"❌ 连板数据为空")
         stats["fail_days"] += 1
         return None
 
-    if "StockList" not in zt:
-        print(f"❌ 返回数据无 StockList")
+    if "StockList" not in zt or not isinstance(zt["StockList"], list):
+        print(f"[ERROR] 无StockList")
         stats["fail_days"] += 1
         return None
 
@@ -114,7 +94,7 @@ def process_day(day_str):
 
     total = len(stock_list)
     stats["total_stocks"] += total
-    print(f"\n✅ 获取股票数量: {total}")
+    print(f"\n✅ 获取股票数: {total}")
 
     # 多线程获取价格
     futures = []
@@ -136,35 +116,32 @@ def process_day(day_str):
             stats["fail_price"] += 1
             print(f"   ❌ {code} {name} → 失败")
 
-    # 合并数据
+    # 组装结果
     day_result = {"date": day_str, "stocks": []}
     for item in stock_list:
         code = item[0]
         name = item[1]
-        lianban = item[3] if len(item) >=4 else 0
-        sector = item[5] if len(item) >=6 else "未知"
+        lianban = item[3] if len(item) >= 4 else 0
+        sector = item[5] if len(item) >= 6 else "未知"
         close = price_map.get(code, 0.0)
 
         day_result["stocks"].append({
-            "code": code,
-            "name": name,
-            "lianban": lianban,
-            "sector": sector,
-            "close": close
+            "code": code, "name": name, "lianban": lianban,
+            "sector": sector, "close": close
         })
 
     stats["success_days"] += 1
     print(f"\n✅ {day_str} 处理完成")
     return day_result
 
-# ===================== 日期列表 =====================
+# ===================== 日期生成 =====================
 def get_april_days():
     return [f"{YEAR}-{MONTH:02d}-{d:02d}" for d in range(1, 31)]
 
 # ===================== 主程序 =====================
 if __name__ == "__main__":
     print("==================================================")
-    print("🚀 4月连板+价格 全自动抓取（已修复编码错误）")
+    print("🚀 4月连板+价格 全自动抓取（最终稳定版）")
     print("==================================================")
 
     days = get_april_days()
@@ -179,19 +156,15 @@ if __name__ == "__main__":
             if res:
                 results.append(res)
 
-    # 排序
+    # 按日期排序
     results = sorted(results, key=lambda x: x["date"])
 
-    # 生成最终JSON
-    final_data = {
-        "month": "2026年04月",
-        "days": results
-    }
-
+    # 输出最终文件
+    final_data = {"month": "2026年04月", "days": results}
     with open("april_combined.json", "w", encoding="utf-8") as f:
         json.dump(final_data, f, ensure_ascii=False, indent=2)
 
-    # 报告
+    # 最终报告
     print("\n\n==================================================")
     print("📋 执行完成报告")
     print("==================================================")
