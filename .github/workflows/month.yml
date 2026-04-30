@@ -1,34 +1,31 @@
-name: 抓取4月涨停数据
+name: 整月涨停抓取
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Python
+      - name: Set Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install dependencies
+      - name: 安装依赖
         run: pip install requests
 
-      - name: Run 抓取4月数据
+      - name: 执行整月抓取
         run: python gen_april_combined.py
 
-      - name: Push to repo
+      - name: 提交推送
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add april_combined.json
-          git commit -m "✅ 4月数据已生成"
+          git commit -m "🤖 自动生成：4月全月涨停数据"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
