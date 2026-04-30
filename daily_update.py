@@ -4,7 +4,7 @@ from datetime import date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 TODAY = str(date.today())
-API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
+API_URL = "https://apphwhq.kaipanhong.com/w1/api/index.php"
 MAX_WORKERS = 10
 
 HEADERS = {
