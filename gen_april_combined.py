@@ -3,7 +3,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ===================== 基础配置 =====================
-API_URL = "httpsapphiskaipanhongcom/w1/api/indexphp"
+API_URL = "https://apphiskaipanhongcom/w1/api/indexphp"
 YEAR = 2026
 MONTH = 4
 MAX_WORKERS = 8
