@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
 YEAR = 2026
 MONTH = 4
-MAX_WORKERS = 8
+MAX_WORKERS = 16
 
 HEADERS = {
     "Host": "apphis.kaipanhong.com",
@@ -105,7 +105,7 @@ def process_single_day(date_str):
         day_body["stocks"].append({
             "code": item[0],
             "name": item[1],
-            "lianban": item[3],
+            "lianban": item[2],   # ✅ 修复：正确连板高度！
             "sector": item[5] if len(item)>=6 else "未知",
             "close": price_map.get(item[0], 0.0)
         })
