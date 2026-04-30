@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   schedule:
     # 北京时间 23:00 = UTC 15:00，周一～周五
-    - cron: '0 10 * * 1-7'
+    - cron: '0 10 * * *'
 
 jobs:
   run:
