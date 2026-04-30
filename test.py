@@ -1,85 +1,77 @@
-import requests
 import json
+import os
+from get_data import get_price
 
-# 日期
-date_str = "2026-04-01"
-API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
+# ==================== 配置 ====================
+INPUT_FILE  = "all_history.json"
+OUTPUT_FILE = "test_2days_result.json"
+TEST_DAYS   = 2  # 只测2天
 
-# 完整请求头
-HEADERS = {
-    "Host": "apphis.kaipanhong.com",
-    "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-    "Connection": "keep-alive",
-    "Accept": "*/*",
-    "User-Agent": "%E5%BC%80%E7%9B%98%E7%BA%A2/9 CFNetwork/1399 Darwin/22.1.0",
-    "Accept-Language": "zh-CN,zh-Hans;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
+# ==================== 加载 ====================
+with open(INPUT_FILE, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+all_days = data["days"]
+recent = all_days[-TEST_DAYS:]
+dates = [d["date"] for d in recent]
+
+print("="*70)
+print(f"📌 测试模式：只拉取最近 {TEST_DAYS} 天")
+print(f"📅 测试日期：{dates}")
+print("="*70)
+
+# 收集股票
+codes = set()
+for day in recent:
+    for s in day["stocks"]
+        codes.add(s["code"])
+
+codes = list(codes)
+print(f"📊 本次测试股票总数：{len(codes)}")
+print("="*70)
+
+# ==================== 逐个拉取（全开日志） ====================
+price_map = {}
+
+for code in codes:
+    print(f"\n🟢 正在处理：{code}")
+    res = {}
+
+    for dt in dates:
+        try:
+            p = get_price(code, dt)
+            res[dt] = p
+
+            # 关键调试输出
+            print(f"   ├─ {dt} → {p}")
+
+            if p == 0 or p == 0.0:
+                print(f"   🔴 【异常】价格 = 0")
+
+        except Exception as e:
+            res[dt] = 0.0
+            print(f"   🔴 【报错】{e}")
+
+    price_map[code] = res
+
+# ==================== 生成测试文件 ====================
+output = {
+    "month": data.get("month"),
+    "days": []
 }
 
-# ===================== 1. 抓取连板数据 =====================
-print("【1/2】抓取连板数据...")
+for day in all_days:
+    new_day = {"date": day["date"], "stocks": []}
+    for s in day["stocks"]:
+        item = s.copy()
+        item["price_2d"] = price_map.get(s["code"], {})
+        new_day["stocks"].append(item)
+    output["days"].append(new_day)
 
-post_data = {
-    "Date": date_str,
-    "DeviceID": "",
-    "PhoneOSNew": "2",
-    "Red": "1",
-    "Token": "",
-    "UserID": "",
-    "VerSion": "1.0.4",
-    "a": "GetZhangTingTianTi",
-    "apiv": "w45",
-    "c": "FuPanLa"
-}
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(output, f, ensure_ascii=False, indent=2)
 
-res = requests.post(API_URL, headers=HEADERS, data=post_data, timeout=10)
-data = res.json()
-
-# ✅ 正确字段：StockList
-if "StockList" not in data or len(data["StockList"]) == 0:
-    exit("❌ 无股票数据")
-
-stock_list = data["StockList"]
-print(f"✅ 成功获取 {len(stock_list)} 只涨停股票！")
-
-# ===================== 2. 抓取第一只股票价格 =====================
-stock = stock_list[0]
-code = stock[0]     # 股票代码
-name = stock[1]    # 股票名称
-
-print(f"\n【2/2】抓取价格：{code} {name}")
-
-price_data = {
-    "Day": date_str,
-    "DeviceID": "",
-    "PhoneOSNew": "2",
-    "Red": "1",
-    "StockID": code,
-    "Token": "",
-    "UserID": "",
-    "VerSion": "1.0.4",
-    "a": "GetStockPanKou",
-    "apiv": "w45",
-    "c": "StockL2History"
-}
-
-res2 = requests.post(API_URL, headers=HEADERS, data=price_data, timeout=10)
-pj = res2.json()
-
-price = round(float(pj["real"]["last_px"]), 2)
-print(f"✅ 成功！价格：{price}")
-
-# ===================== 3. 输出合并结果 =====================
-final = {
-    "date": date_str,
-    "stocks": [
-        {
-            "code": code,
-            "name": name,
-            "close": price
-        }
-    ]
-}
-
-print("\n【最终输出】")
-print(json.dumps(final, ensure_ascii=False, indent=2))
+print("\n" + "="*70)
+print("✅ 测试完成！文件：test_2days_result.json")
+print("🔍 查看上面日志，就能找到哪些【返回0】")
+print("="*70)
