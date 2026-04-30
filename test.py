@@ -11,7 +11,7 @@ HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     "Connection": "keep-alive",
     "Accept": "*/*",
-    "User-Agent": "CFNetwork/1399 Darwin/22.1.0",
+    "User-Agent": "%E5%BC%80%E7%9B%98%E7%BA%A2/9 CFNetwork/1399 Darwin/22.1.0",
     "Accept-Language": "zh-CN,zh-Hans;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
 }
