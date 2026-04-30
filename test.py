@@ -18,7 +18,7 @@ HEADERS = {
 
 # ✅ 正确连板接口参数（你抓包原版）
 data = {
-    "Day": day,
+    "Date": day,
     "DeviceID": "",
     "PhoneOSNew": "2",
     "Red": "1",
