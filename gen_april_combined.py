@@ -5,8 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 # ===================== 配置 =====================
-API_STOCK_DATA = "https://apphis.kaipanhong.com/w1/api/index.php"
-API_PRICE = "https://apphis.kaipanhong.com/w1/api/index.php"
+API_URL = "https://apphis.kaipanhong.com/w1/api/index.php"
 
 YEAR = 2026
 MONTH = 4
@@ -29,22 +28,24 @@ stats = {
     "fail_price": 0
 }
 
-# ===================== 抓取单日连板数据 =====================
+# ===================== 抓取【连板数据】真实接口 =====================
 def fetch_zt_data(day_str):
-    data = {
+    post_data = {
         "Day": day_str,
         "DeviceID": "",
         "PhoneOSNew": 2,
         "Red": 1,
+        "StockID": "",
         "Token": "",
         "UserID": "",
         "VerSion": "1.0.4",
-        "a": "GetStockZTList",
+        "a": "GetZTList",       # 🔥 修复：真实连板接口方法
         "apiv": "w45",
-        "c": "Stock"
+        "c": "Stock"            # 🔥 修复：真实控制器
     }
+
     try:
-        r = requests.post(API_STOCK_DATA, headers=HEADERS, data=data, timeout=10)
+        r = requests.post(API_URL, headers=HEADERS, data=post_data, timeout=10)
         r.raise_for_status()
         return r.json()
     except Exception as e:
@@ -66,7 +67,7 @@ def fetch_price(day_str, code, name):
         "c": "StockL2History"
     }
     try:
-        r = requests.post(API_PRICE, headers=HEADERS, data=data, timeout=10)
+        r = requests.post(API_URL, headers=HEADERS, data=data, timeout=10)
         j = r.json()
         price = round(float(j.get("real", {}).get("last_px", 0)), 2)
         return code, name, price, True
@@ -125,14 +126,14 @@ def process_day(day_str):
         name = item[1]
         lianban = item[3]
         sector = item[5] if len(item) >= 6 else "未知"
-        price = price_map.get(code, 0.0)
+        close = price_map.get(code, 0.0)
 
         day_result["stocks"].append({
             "code": code,
             "name": name,
             "lianban": lianban,
             "sector": sector,
-            "close": price
+            "close": close
         })
 
     stats["success_days"] += 1
@@ -173,7 +174,7 @@ if __name__ == "__main__":
     # 按日期排序
     results = sorted(results, key=lambda x: x["date"])
 
-    # 保存最终JSON
+    # 保存最终 JSON
     final = {
         "month": "2026年4月",
         "days": results
