@@ -11,28 +11,69 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Set Python
+      - name: 【进度1/7】检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 【进度2/7】配置Python3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: 安装依赖
-        run: pip install requests
-
-      - name: 执行每日抓取
-        run: python daily_update.py
-
-      - name: 自动提交入库
+      - name: 【进度3/7】安装依赖库
         run: |
+          echo "开始安装requests依赖..."
+          pip install requests
+          echo "依赖安装完成"
+
+      - name: 【进度4/7】执行每日抓取脚本 生成原始JSON
+        run: |
+          echo ">>>>>>>>>> 开始执行 daily_update.py <<<<<<<<<<"
+          python daily_update.py
+          echo ">>>>>>>>>> 抓取脚本执行完成 <<<<<<<<<<"
+
+      - name: 【进度5/7】检测JSON文件是否有变更
+        id: check_change
+        run: |
+          echo "开始检测本地JSON文件变动..."
+          git diff --quiet *.json
+          if [ $? -eq 0 ]; then
+            echo "✅ 检测结果：JSON无任何修改，无需后续流程"
+            echo "has_change=false" >> $GITHUB_OUTPUT
+          else
+            echo "✅ 检测结果：JSON有新增/修改，继续执行后续流程"
+            echo "has_change=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 【进度6/7】首次提交入库并推送
+        if: steps.check_change.outputs.has_change == 'true'
+        run: |
+          echo ">>>>>>>>>> 开始首次Git提交入库 <<<<<<<<<<"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add *.json
-          git commit -m "🤖 每日自动更新：$(date +%Y-%m-%d)"|| echo "无文件变更，跳过提交"
+          git commit -m "🤖 列表自动更新：$(date +%Y-%m-%d)"|| echo "无文件变更，跳过提交"
           git push || echo "推送跳过"
+          echo ">>>>>>>>>> 首次提交入库完成 <<<<<<<<<<"
+
+      - name: 【进度7/7】执行第二个处理脚本 生成衍生JSON
+        if: steps.check_change.outputs.has_change == 'true'
+        run: |
+          echo ">>>>>>>>>> 开始执行第二个Python脚本 <<<<<<<<<<"
+          python second.py
+          echo ">>>>>>>>>> 第二个脚本执行完成 <<<<<<<<<<"
+
+      - name: 【补充进度】二次提交衍生JSON
+        if: steps.check_change.outputs.has_change == 'true'
+        run: |
+          echo ">>>>>>>>>> 开始二次提交新生成JSON <<<<<<<<<<"
+          git add *.json
+          git commit -m "🤖 价池数据生成更新：$(date +%Y-%m-%d)"|| echo "无新文件变更，跳过提交"
+          git push || echo "推送跳过"
+          echo ">>>>>>>>>> 二次提交完成 <<<<<<<<<<"
           
-    
-      - name: 触发PHP执行
-        run: curl -sS https://ziho.ccwu.cc/ban/save.php
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 【最终步骤】触发远端PHP接口
+        if: steps.check_change.outputs.has_change == 'true'
+        run: |
+          echo ">>>>>>>>>> 开始调用远端PHP接口 <<<<<<<<<<"
+          curl -sS https://ziho.ccwu.cc/ban/save.php
+          echo ">>>>>>>>>> PHP接口调用完成 <<<<<<<<<<"
