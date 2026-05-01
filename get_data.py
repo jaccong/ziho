@@ -1,5 +1,6 @@
 import json
 import requests
+import time
 from datetime import date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -30,6 +31,7 @@ error_stock_list = []
 
 # ==============================
 # 获取涨停列表：传日期自动判断
+# 新增：当日接口校验返回Date是否等于今天，不等则判定休市
 # ==============================
 def get_zt_list(query_date):
     if query_date == TODAY:
@@ -67,7 +69,16 @@ def get_zt_list(query_date):
 
     try:
         res = requests.post(url, headers=headers, data=data, timeout=15)
-        return res.json()
+        res_json = res.json()
+        
+        # 关键逻辑：只校验当天日期
+        if query_date == TODAY:
+            # 接口返回Date和当前日期不一致 → 休市不开盘
+            if res_json.get("Date", "") != TODAY:
+                print(f"⚠️ 接口返回日期{res_json.get('Date')} 不等于今日{TODAY}，判定休市不开盘")
+                return None
+        
+        return res_json
     except Exception as e:
         print(f"获取涨停列表异常: {query_date}, 错误: {str(e)}")
         return None
@@ -130,7 +141,6 @@ def get_price(code, query_date):
         
         # 价格为0且不是最后一次，等待后重试
         if retry < RETRY_TIMES - 1:
-            import time
             time.sleep(RETRY_DELAY)
 
     # 重试完还是0，记入错误列表
