@@ -4,6 +4,9 @@ from datetime import date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 TODAY = str(date.today())
+# 重试配置
+RETRY_TIMES = 3       # 最大重试次数
+RETRY_DELAY = 0.3     # 重试间隔秒
 
 # ========= 完全原样保留你的请求头，一字不改 =========
 BASE_HEADERS = {
@@ -21,6 +24,9 @@ HOST_TODAY = "apphwhq.kaipanhong.com"
 
 URL_HIST  = "https://apphis.kaipanhong.com/w1/api/index.php"
 HOST_HIST  = "apphis.kaipanhong.com"
+
+# 错误股票记录
+error_stock_list = []
 
 # ==============================
 # 获取涨停列表：传日期自动判断
@@ -51,25 +57,29 @@ def get_zt_list(query_date):
             "Token": "",
             "UserID": "",
             "VerSion": "1.0.4",
-            "a": "GetZhangTingTianTi",  
+            "a": "GetZhangTingTianTi",
             "apiv": "w45",
-            "c": "FuPanLa" 
+            "c": "FuPanLa"
         }
 
-    # 仅复制基础头，只改Host，其他全部原样
     headers = BASE_HEADERS.copy()
     headers["Host"] = host
 
     try:
         res = requests.post(url, headers=headers, data=data, timeout=15)
         return res.json()
-    except:
+    except Exception as e:
+        print(f"获取涨停列表异常: {query_date}, 错误: {str(e)}")
         return None
 
 # ==============================
-# 获取个股价格：传日期自动判断
+# 获取个股价格：带重试 + 价格0判定 + 错误记录
 # ==============================
 def get_price(code, query_date):
+    url = ""
+    host = ""
+    data = {}
+
     if query_date == TODAY:
         url = URL_TODAY
         host = HOST_TODAY
@@ -97,17 +107,46 @@ def get_price(code, query_date):
             "Token": "",
             "UserID": "",
             "VerSion": "1.0.4",
-            "a": "GetStockPanKou", 
+            "a": "GetStockPanKou",
             "apiv": "w45",
-            "c": "StockL2History"   
+            "c": "StockL2History"
         }
 
-    # 只动态替换Host，其余Header、UA完全不动
     headers = BASE_HEADERS.copy()
     headers["Host"] = host
 
-    try:
-        j = requests.post(url, headers=headers, data=data, timeout=10).json()
-        return round(float(j["real"]["last_px"]), 2)
-    except:
-        return 0.0
+    price = 0.0
+    for retry in range(RETRY_TIMES):
+        try:
+            resp = requests.post(url, headers=headers, data=data, timeout=10)
+            j = resp.json()
+            px = float(j["real"]["last_px"])
+            price = round(px, 2)
+            # 价格正常直接返回
+            if price > 0:
+                return price
+        except Exception as e:
+            print(f"【重试{retry+1}/{RETRY_TIMES}】{code} {query_date} 请求异常: {str(e)[:60]}")
+        
+        # 价格为0且不是最后一次，等待后重试
+        if retry < RETRY_TIMES - 1:
+            import time
+            time.sleep(RETRY_DELAY)
+
+    # 重试完还是0，记入错误列表
+    err_msg = f"股票{code} 日期{query_date} 重试{RETRY_TIMES}次仍获取价格为0"
+    print(err_msg)
+    error_stock_list.append({"code": code, "date": query_date, "price": 0.0})
+    return 0.0
+
+# ==============================
+# 打印错误报告
+# ==============================
+def print_error_report():
+    if not error_stock_list:
+        print("\n✅ 所有股票价格获取正常，无错误记录")
+        return
+    print("\n==================== 错误报告 ====================")
+    for item in error_stock_list:
+        print(f"❌ 代码:{item['code']} 日期:{item['date']} 价格异常:0.0")
+    print("==================================================\n")
