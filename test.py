@@ -1,134 +1,109 @@
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor
+from get_data import get_price
 
-# ===================== 配置 =====================
-INPUT_FILE = "10days_data.json"
+# ========== 配置 ==========
+INPUT_FILE  = "all_history.json"
+OUTPUT_FILE = "alldays_data.json"
+MAX_WORKERS = 50
 
-# 策略A：首板回调（你最初要的版本）
-STRATEGY_A = {
-    "name": "首板 → 3天内回调 -3% ~ -8% 买入",
-    "lianban": 1,
-    "check_days": 3,      # 首板后 3天内出现回调才买
-    "call_back": (-8, -3), # 回调区间
-    "hold_max": 3,        # 买入后最多持3天
-    "take": 12,           # 止盈12%
-    "stop": -6            # 止损-6%
-}
-
-# 策略B：二板回调（你最初要的版本）
-STRATEGY_B = {
-    "name": "二板 → 3天内回调 -2% ~ -6% 买入",
-    "lianban": 2,
-    "check_days": 3,
-    "call_back": (-6, -2),
-    "hold_max": 3,
-    "take": 10,
-    "stop": -5
-}
-
-# ===================== 加载数据 =====================
+# ========== 1. 加载 ==========
+print("📦 加载数据...")
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
-    data = json.load(f)
-all_days = data["days"]
+    raw = json.load(f)
 
-# ===================== 回测引擎 =====================
-def backtest(strategy):
-    name = strategy["name"]
-    target_lb = strategy["lianban"]
-    check_days = strategy["check_days"]
-    cb_low, cb_high = strategy["call_back"]
-    hold_max = strategy["hold_max"]
-    take = strategy["take"]
-    stop = strategy["stop"]
+days = raw["days"]
+date_list = [d["date"] for d in days]
+date_set = set(date_list)
 
-    trades = []
-    processed = set()
+print(f"📅 总交易日数: {len(date_list)}")
 
-    print("\n" + "="*120)
-    print(f"📊 策略：{name}")
-    print(f"规则：{target_lb}板 → 后{check_days}天内回调{cb_low}%~{cb_high}% → 买入 → 止盈{take}%/止损{stop}%/持{hold_max}天")
-    print("="*120)
-    print(f"{'序号':<3}{'代码':<8}{'名称':<10}{'涨停日':<12}{'买入日':<12}{'买入价':<8}{'最高':<8}{'最低':<8}{'收益%':<8}{'结果'}")
-    print("-"*120)
+# ========== 2. 缓存 ==========
+cache = {}
+if os.path.exists(OUTPUT_FILE):
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            old = json.load(f)
+        for d in old["days"]:
+            for s in d["stocks"]:
+                cache[s["code"]] = s.get("price_10d", {})
+        print("♻️ 已加载缓存")
+    except:
+        cache = {}
 
-    idx = 0
-    for day in all_days:
-        for stock in day["stocks"]:
-            code = stock["code"]
-            s_name = stock["name"]
-            lb = stock.get("lianban", 0)
-            p10d = stock.get("price_10d", {})
+# ========== 3. 建立股票 → 出现日期 ==========
+stock_first = {}
+for d in days:
+    dt = d["date"]
+    for s in d["stocks"]:
+        code = s["code"]
+        if code not in stock_first:
+            stock_first[code] = dt
 
-            if lb != target_lb:
-                continue
-            if code in processed:
-                continue
+print(f"📊 股票数: {len(stock_first)}")
 
-            dt_list = sorted(p10d.keys())
-            price_list = [p10d[d] for d in dt_list if p10d[d] not in (0, None, 0.0)]
-            zt_price = price_list[0] if len(price_list) >= 1 else 0
-            future = price_list[1:]
+# ========== 4. 预处理：每只股票的有效日期 ==========
+stock_valid_dates = {}
+for code, first_dt in stock_first.items():
+    stock_valid_dates[code] = [d for d in date_list if d >= first_dt]
 
-            if len(future) < 1:
-                continue
+# ========== 5. 构建缺失任务（核心优化） ==========
+tasks = []  # (code, dt)
 
-            # ===== 核心逻辑：N天内出现符合条件的回调才买入 =====
-            buy_price = None
-            buy_day_idx = None
+for code, valid_dates in stock_valid_dates.items():
+    existed = cache.get(code, {})
+    for dt in valid_dates:
+        if dt not in existed or existed.get(dt) in (0, None, "", 0.0):
+            tasks.append((code, dt))
 
-            for i in range(min(check_days, len(future))):
-                p = future[i]
-                ret = (p - zt_price) / zt_price * 100
-                if cb_low <= ret <= cb_high:
-                    buy_price = p
-                    buy_day_idx = i
-                    break
+print(f"🚀 待请求次数: {len(tasks)}")
 
-            if buy_price is None:
-                continue
+# ========== 6. 扁平化请求函数 ==========
+def fetch(task):
+    code, dt = task
+    try:
+        price = get_price(code, dt)
+    except:
+        price = 0.0
+    return code, dt, price
 
-            # 买入后持仓
-            hold_prices = future[buy_day_idx : buy_day_idx + hold_max]
-            if len(hold_prices) < 1:
-                continue
+# ========== 7. 批量请求 ==========
+result_map = {}
 
-            returns = [(p - buy_price) / buy_price * 100 for p in hold_prices]
-            max_r = max(returns)
-            min_r = min(returns)
-            final_r = returns[-1]
+print("⚡ 开始请求...")
+with ThreadPoolExecutor(MAX_WORKERS) as exe:
+    for code, dt, price in exe.map(fetch, tasks):
+        if code not in result_map:
+            result_map[code] = {}
+        result_map[code][dt] = price
 
-            # 止盈止损
-            if max_r >= take:
-                res = "止盈"
-                final = take
-            elif min_r <= stop:
-                res = "止损"
-                final = stop
-            else:
-                res = "持有"
-                final = final_r
+# ========== 8. 合并缓存 ==========
+for code, data in result_map.items():
+    if code not in cache:
+        cache[code] = {}
+    cache[code].update(data)
 
-            idx += 1
-            processed.add(code)
-            mark = "🟢" if final > 0 else "🔴"
-            zt_date = dt_list[0]
-            buy_date = dt_list[1 + buy_day_idx]
+# ========== 9. 输出 ==========
+out = {
+    "month": raw.get("month", ""),
+    "days": []
+}
 
-            print(f"{idx:<3}{mark}{code:<8}{s_name:<10}{zt_date:<12}{buy_date:<12}{buy_price:<8.2f}{max_r:<8.1f}{min_r:<8.1f}{final:<8.1f}{res}")
+for d in days:
+    new_day = {
+        "date": d["date"],
+        "stocks": []
+    }
+    for s in d["stocks"]:
+        new_stock = s.copy()
+        new_stock["price_10d"] = cache.get(s["code"], {})
+        new_day["stocks"].append(new_stock)
+    out["days"].append(new_day)
 
-            trades.append({"code":code,"final":final})
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(out, f, ensure_ascii=False, indent=2)
 
-    # 统计
-    total = len(trades)
-    win = len([t for t in trades if t["final"]>0])
-    loss = len([t for t in trades if t["final"]<0])
-    wr = win/total*100 if total else 0
-    total_p = sum(t["final"] for t in trades)
-    avg_p = total_p/total if total else 0
-
-    print("-"*120)
-    print(f"✅ 总交易:{total} 盈利:{win} 亏损:{loss} 胜率:{wr:.1f}% 总收益:{total_p:.1f}% 平均:{avg_p:.1f}%")
-    print("="*120)
-
-# ===================== 执行 =====================
-backtest(STRATEGY_A)
-backtest(STRATEGY_B)
+print("\n✅ 完成")
+print(f"📁 输出: {OUTPUT_FILE}")
+print(f"⚡ 请求量已优化（只请求缺失数据）")
