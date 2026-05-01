@@ -1,7 +1,7 @@
 import json
 import os
 from concurrent.futures import ThreadPoolExecutor
-from get_data import get_price
+from get_data import get_price,print_error_report
 
 # ========== 配置 ==========
 INPUT_FILE  = "all_history.json"
@@ -103,7 +103,7 @@ for d in days:
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(out, f, ensure_ascii=False, indent=2)
-
+print_error_report()
 print("\n✅ 完成")
 print(f"📁 输出: {OUTPUT_FILE}")
 print(f"⚡ 请求量已优化（只请求缺失数据）")
