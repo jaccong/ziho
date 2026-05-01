@@ -1,4 +1,4 @@
-name: 更新10日涨停价格数据
+name: 测试测试
 
 on:
   workflow_dispatch:   # 手动运行
