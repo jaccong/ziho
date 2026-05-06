@@ -35,8 +35,13 @@ jobs:
         id: check_change
         run: |
           echo "开始检测本地JSON文件变动..."
+          # 关键修复：屏蔽退出码报错，手动判断变更
+          set +e
           git diff --quiet *.json
-          if [ $? -eq 0 ]; then
+          ret=$?
+          set -e
+          
+          if [ $ret -eq 0 ]; then
             echo "✅ 检测结果：JSON无任何修改，无需后续流程"
             echo "has_change=false" >> $GITHUB_OUTPUT
           else
