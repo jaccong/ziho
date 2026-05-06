@@ -64,7 +64,7 @@ jobs:
         if: steps.check_change.outputs.has_change == 'true'
         run: |
           echo ">>>>>>>>>> 开始执行第二个Python脚本 <<<<<<<<<<"
-          python second.py
+          python test.py
           echo ">>>>>>>>>> 第二个脚本执行完成 <<<<<<<<<<"
 
       - name: 【补充进度】二次提交衍生JSON
