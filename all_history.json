@@ -15931,6 +15931,242 @@
           "close": 37.32
         }
       ]
+    },
+    {
+      "date": "2026-05-21",
+      "stocks": [
+        {
+          "code": "603779",
+          "name": "威龙股份",
+          "lianban": 7,
+          "sector": "实控人变更",
+          "close": 14.52
+        },
+        {
+          "code": "603316",
+          "name": "诚邦股份",
+          "lianban": 4,
+          "sector": "芯片",
+          "close": 27.25
+        },
+        {
+          "code": "600611",
+          "name": "大众交通",
+          "lianban": 2,
+          "sector": "芯片",
+          "close": 5.57
+        },
+        {
+          "code": "000518",
+          "name": "四环生物",
+          "lianban": 2,
+          "sector": "ST摘帽",
+          "close": 3.75
+        },
+        {
+          "code": "300069",
+          "name": "金利华电",
+          "lianban": 2,
+          "sector": "并购重组",
+          "close": 44.06
+        },
+        {
+          "code": "002442",
+          "name": "龙星科技",
+          "lianban": 2,
+          "sector": "化工",
+          "close": 7.37
+        },
+        {
+          "code": "000725",
+          "name": "京东方Ａ",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 4.69
+        },
+        {
+          "code": "000012",
+          "name": "南玻Ａ",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 4.0
+        },
+        {
+          "code": "603661",
+          "name": "恒林股份",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 29.57
+        },
+        {
+          "code": "002703",
+          "name": "浙江世宝",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 19.92
+        },
+        {
+          "code": "002036",
+          "name": "联创电子",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 9.36
+        },
+        {
+          "code": "002766",
+          "name": "索菱股份",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 5.14
+        },
+        {
+          "code": "002920",
+          "name": "德赛西威",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 106.12
+        },
+        {
+          "code": "002940",
+          "name": "昂利康",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 45.65
+        },
+        {
+          "code": "603127",
+          "name": "昭衍新药",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 42.77
+        },
+        {
+          "code": "603590",
+          "name": "康辰药业",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 39.22
+        },
+        {
+          "code": "600936",
+          "name": "北投科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 5.79
+        },
+        {
+          "code": "002931",
+          "name": "锋龙股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 60.04
+        },
+        {
+          "code": "603373",
+          "name": "安邦护卫",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 48.65
+        },
+        {
+          "code": "000536",
+          "name": "华映科技",
+          "lianban": 1,
+          "sector": "面板",
+          "close": 4.29
+        },
+        {
+          "code": "002952",
+          "name": "亚世光电",
+          "lianban": 1,
+          "sector": "面板",
+          "close": 29.47
+        },
+        {
+          "code": "688055",
+          "name": "龙腾光电",
+          "lianban": 1,
+          "sector": "面板",
+          "close": 5.39
+        },
+        {
+          "code": "001896",
+          "name": "豫能控股",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 16.37
+        },
+        {
+          "code": "600578",
+          "name": "京能电力",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 8.18
+        },
+        {
+          "code": "000403",
+          "name": "派林生物",
+          "lianban": 1,
+          "sector": "实控人变更",
+          "close": 11.55
+        },
+        {
+          "code": "600360",
+          "name": "华微电子",
+          "lianban": 1,
+          "sector": "ST摘帽",
+          "close": 12.07
+        },
+        {
+          "code": "600156",
+          "name": "华升股份",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 13.04
+        },
+        {
+          "code": "003007",
+          "name": "直真科技",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 54.34
+        },
+        {
+          "code": "600303",
+          "name": "曙光股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 3.48
+        },
+        {
+          "code": "600382",
+          "name": "广东明珠",
+          "lianban": 1,
+          "sector": "钢铁",
+          "close": 8.86
+        },
+        {
+          "code": "001225",
+          "name": "和泰机电",
+          "lianban": 1,
+          "sector": "新型工业化",
+          "close": 53.76
+        },
+        {
+          "code": "603767",
+          "name": "中马传动",
+          "lianban": 1,
+          "sector": "减速器",
+          "close": 24.34
+        },
+        {
+          "code": "002888",
+          "name": "惠威科技",
+          "lianban": 1,
+          "sector": "端侧AI",
+          "close": 25.74
+        }
+      ]
     }
   ]
 }
