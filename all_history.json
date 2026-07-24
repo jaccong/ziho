@@ -41916,6 +41916,291 @@
           "close": 6.8
         }
       ]
+    },
+    {
+      "date": "2026-07-24",
+      "stocks": [
+        {
+          "code": "603221",
+          "name": "爱丽家居",
+          "lianban": 4,
+          "sector": "并购重组",
+          "close": 14.0
+        },
+        {
+          "code": "002879",
+          "name": "长缆科技",
+          "lianban": 4,
+          "sector": "智能电网",
+          "close": 18.05
+        },
+        {
+          "code": "301234",
+          "name": "五洲医疗",
+          "lianban": 3,
+          "sector": "并购重组",
+          "close": 58.75
+        },
+        {
+          "code": "000595",
+          "name": "新能股份",
+          "lianban": 3,
+          "sector": "绿色电力",
+          "close": 6.07
+        },
+        {
+          "code": "600698",
+          "name": "湖南天雁",
+          "lianban": 2,
+          "sector": "并购重组",
+          "close": 6.84
+        },
+        {
+          "code": "003001",
+          "name": "中岩大地",
+          "lianban": 2,
+          "sector": "并购重组",
+          "close": 20.39
+        },
+        {
+          "code": "601606",
+          "name": "长城军工",
+          "lianban": 2,
+          "sector": "军工",
+          "close": 32.05
+        },
+        {
+          "code": "000533",
+          "name": "顺钠股份",
+          "lianban": 2,
+          "sector": "智能电网",
+          "close": 9.55
+        },
+        {
+          "code": "002498",
+          "name": "汉缆股份",
+          "lianban": 2,
+          "sector": "智能电网",
+          "close": 6.5
+        },
+        {
+          "code": "002298",
+          "name": "中电鑫龙",
+          "lianban": 2,
+          "sector": "智能电网",
+          "close": 8.1
+        },
+        {
+          "code": "002300",
+          "name": "太阳电缆",
+          "lianban": 2,
+          "sector": "智能电网",
+          "close": 7.1
+        },
+        {
+          "code": "002083",
+          "name": "孚日股份",
+          "lianban": 2,
+          "sector": "电解液",
+          "close": 11.52
+        },
+        {
+          "code": "002199",
+          "name": "东晶电子",
+          "lianban": 2,
+          "sector": "ST摘帽",
+          "close": 11.8
+        },
+        {
+          "code": "000668",
+          "name": "荣丰控股",
+          "lianban": 2,
+          "sector": "ST摘帽",
+          "close": 17.67
+        },
+        {
+          "code": "603956",
+          "name": "威派格",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 6.31
+        },
+        {
+          "code": "000011",
+          "name": "深物业A",
+          "lianban": 2,
+          "sector": "地产链",
+          "close": 8.26
+        },
+        {
+          "code": "600984",
+          "name": "建设机械",
+          "lianban": 2,
+          "sector": "新型工业化",
+          "close": 4.0
+        },
+        {
+          "code": "603690",
+          "name": "至纯科技",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 22.62
+        },
+        {
+          "code": "002208",
+          "name": "合肥城建",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 13.6
+        },
+        {
+          "code": "603726",
+          "name": "朗迪集团",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 25.0
+        },
+        {
+          "code": "300480",
+          "name": "光力科技",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 31.66
+        },
+        {
+          "code": "603068",
+          "name": "博通集成",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 37.02
+        },
+        {
+          "code": "301583",
+          "name": "托伦斯",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 174.0
+        },
+        {
+          "code": "000670",
+          "name": "盈方微",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 6.34
+        },
+        {
+          "code": "000417",
+          "name": "合百集团",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 6.36
+        },
+        {
+          "code": "002374",
+          "name": "中锐股份",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 3.09
+        },
+        {
+          "code": "600178",
+          "name": "东安动力",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 9.5
+        },
+        {
+          "code": "605198",
+          "name": "安德利",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 54.63
+        },
+        {
+          "code": "300414",
+          "name": "中光防雷",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 11.27
+        },
+        {
+          "code": "002265",
+          "name": "建设工业",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 19.34
+        },
+        {
+          "code": "688237",
+          "name": "超卓航科",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 65.45
+        },
+        {
+          "code": "002189",
+          "name": "中光学",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 19.1
+        },
+        {
+          "code": "002388",
+          "name": "新亚制程",
+          "lianban": 1,
+          "sector": "电解液",
+          "close": 4.36
+        },
+        {
+          "code": "600617",
+          "name": "国新能源",
+          "lianban": 1,
+          "sector": "绿色电力",
+          "close": 3.39
+        },
+        {
+          "code": "600539",
+          "name": "狮头股份",
+          "lianban": 1,
+          "sector": "物理AI",
+          "close": 18.51
+        },
+        {
+          "code": "001229",
+          "name": "魅视科技",
+          "lianban": 1,
+          "sector": "物理AI",
+          "close": 39.18
+        },
+        {
+          "code": "002012",
+          "name": "凯恩股份",
+          "lianban": 1,
+          "sector": "造纸",
+          "close": 5.73
+        },
+        {
+          "code": "002303",
+          "name": "美盈森",
+          "lianban": 1,
+          "sector": "包装印刷",
+          "close": 4.57
+        },
+        {
+          "code": "603580",
+          "name": "艾艾精工",
+          "lianban": 1,
+          "sector": "实控人变更",
+          "close": 46.3
+        },
+        {
+          "code": "603976",
+          "name": "正川股份",
+          "lianban": 1,
+          "sector": "医疗器械",
+          "close": 25.2
+        }
+      ]
     }
   ]
 }
