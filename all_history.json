@@ -48327,6 +48327,704 @@
           "close": 7.88
         }
       ]
+    },
+    {
+      "date": "2026-08-10",
+      "stocks": [
+        {
+          "code": "600721",
+          "name": "百花医药",
+          "lianban": 5,
+          "sector": "医药",
+          "close": 11.59
+        },
+        {
+          "code": "002552",
+          "name": "宝鼎科技",
+          "lianban": 5,
+          "sector": "通信",
+          "close": 52.36
+        },
+        {
+          "code": "600272",
+          "name": "开开实业",
+          "lianban": 3,
+          "sector": "医药",
+          "close": 14.27
+        },
+        {
+          "code": "600664",
+          "name": "哈药股份",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 7.52
+        },
+        {
+          "code": "301080",
+          "name": "百普赛斯",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 77.7
+        },
+        {
+          "code": "002437",
+          "name": "誉衡药业",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 3.43
+        },
+        {
+          "code": "002900",
+          "name": "哈三联",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 14.83
+        },
+        {
+          "code": "002589",
+          "name": "瑞康医药",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 3.34
+        },
+        {
+          "code": "688073",
+          "name": "毕得医药",
+          "lianban": 2,
+          "sector": "医药",
+          "close": 73.92
+        },
+        {
+          "code": "600641",
+          "name": "先导基电",
+          "lianban": 2,
+          "sector": "芯片",
+          "close": 34.41
+        },
+        {
+          "code": "603758",
+          "name": "秦安股份",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 11.53
+        },
+        {
+          "code": "000506",
+          "name": "招金黄金",
+          "lianban": 2,
+          "sector": "黄金",
+          "close": 19.94
+        },
+        {
+          "code": "002626",
+          "name": "金达威",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 16.46
+        },
+        {
+          "code": "002370",
+          "name": "亚太药业",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 5.81
+        },
+        {
+          "code": "600833",
+          "name": "第一医药",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 11.01
+        },
+        {
+          "code": "002399",
+          "name": "海普瑞",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 10.96
+        },
+        {
+          "code": "002885",
+          "name": "京泉华",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 31.91
+        },
+        {
+          "code": "002298",
+          "name": "中电鑫龙",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 9.34
+        },
+        {
+          "code": "002112",
+          "name": "三变科技",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 17.7
+        },
+        {
+          "code": "601700",
+          "name": "风范股份",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 7.08
+        },
+        {
+          "code": "002300",
+          "name": "太阳电缆",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 7.9
+        },
+        {
+          "code": "600192",
+          "name": "长城电工",
+          "lianban": 1,
+          "sector": "智能电网",
+          "close": 7.89
+        },
+        {
+          "code": "001258",
+          "name": "立新能源",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 14.48
+        },
+        {
+          "code": "000537",
+          "name": "绿发电力",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 8.32
+        },
+        {
+          "code": "605162",
+          "name": "新中港",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 9.33
+        },
+        {
+          "code": "001376",
+          "name": "百通能源",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 12.13
+        },
+        {
+          "code": "605286",
+          "name": "同力天启",
+          "lianban": 1,
+          "sector": "电力",
+          "close": 25.61
+        },
+        {
+          "code": "002783",
+          "name": "凯龙股份",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 8.21
+        },
+        {
+          "code": "600326",
+          "name": "西藏天路",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 8.36
+        },
+        {
+          "code": "600815",
+          "name": "厦工股份",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 3.61
+        },
+        {
+          "code": "002541",
+          "name": "鸿路钢构",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 20.57
+        },
+        {
+          "code": "600936",
+          "name": "北投科技",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 6.16
+        },
+        {
+          "code": "603269",
+          "name": "海鸥股份",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 15.53
+        },
+        {
+          "code": "002289",
+          "name": "宇顺电子",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 37.5
+        },
+        {
+          "code": "002580",
+          "name": "圣阳股份",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 20.99
+        },
+        {
+          "code": "600186",
+          "name": "莲花控股",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 10.88
+        },
+        {
+          "code": "603065",
+          "name": "宿迁联盛",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 17.75
+        },
+        {
+          "code": "000859",
+          "name": "国风新材",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 9.53
+        },
+        {
+          "code": "003043",
+          "name": "华亚智能",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 74.25
+        },
+        {
+          "code": "603382",
+          "name": "海阳科技",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 20.0
+        },
+        {
+          "code": "600227",
+          "name": "赤天化",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 3.67
+        },
+        {
+          "code": "600722",
+          "name": "金牛化工",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 12.52
+        },
+        {
+          "code": "603188",
+          "name": "亚邦股份",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 4.44
+        },
+        {
+          "code": "000710",
+          "name": "贝瑞基因",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 9.99
+        },
+        {
+          "code": "603038",
+          "name": "华立股份",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 15.06
+        },
+        {
+          "code": "002474",
+          "name": "榕基软件",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 7.04
+        },
+        {
+          "code": "002044",
+          "name": "美年健康",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 5.3
+        },
+        {
+          "code": "605179",
+          "name": "一鸣食品",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 25.12
+        },
+        {
+          "code": "603711",
+          "name": "香飘飘",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 12.19
+        },
+        {
+          "code": "002329",
+          "name": "皇氏集团",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 3.47
+        },
+        {
+          "code": "603020",
+          "name": "爱普股份",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 11.01
+        },
+        {
+          "code": "300862",
+          "name": "蓝盾光电",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 22.81
+        },
+        {
+          "code": "600683",
+          "name": "京投发展",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 9.71
+        },
+        {
+          "code": "600698",
+          "name": "湖南天雁",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 7.22
+        },
+        {
+          "code": "603221",
+          "name": "爱丽家居",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 27.3
+        },
+        {
+          "code": "603725",
+          "name": "天安新材",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 11.22
+        },
+        {
+          "code": "605128",
+          "name": "上海沿浦",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 25.08
+        },
+        {
+          "code": "000026",
+          "name": "飞亚达",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 19.07
+        },
+        {
+          "code": "002458",
+          "name": "益生股份",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 9.99
+        },
+        {
+          "code": "605033",
+          "name": "美邦股份",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 19.6
+        },
+        {
+          "code": "002696",
+          "name": "百洋股份",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 6.03
+        },
+        {
+          "code": "603151",
+          "name": "邦基科技",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 14.12
+        },
+        {
+          "code": "600490",
+          "name": "鹏欣资源",
+          "lianban": 1,
+          "sector": "有色金属",
+          "close": 7.9
+        },
+        {
+          "code": "601020",
+          "name": "华钰矿业",
+          "lianban": 1,
+          "sector": "有色金属",
+          "close": 23.27
+        },
+        {
+          "code": "002842",
+          "name": "翔鹭钨业",
+          "lianban": 1,
+          "sector": "有色金属",
+          "close": 42.22
+        },
+        {
+          "code": "601606",
+          "name": "长城军工",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 36.18
+        },
+        {
+          "code": "600316",
+          "name": "洪都航空",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 28.53
+        },
+        {
+          "code": "301357",
+          "name": "北方长龙",
+          "lianban": 1,
+          "sector": "军工",
+          "close": 113.23
+        },
+        {
+          "code": "002388",
+          "name": "新亚制程",
+          "lianban": 1,
+          "sector": "锂电池",
+          "close": 5.74
+        },
+        {
+          "code": "002748",
+          "name": "世龙实业",
+          "lianban": 1,
+          "sector": "锂电池",
+          "close": 12.0
+        },
+        {
+          "code": "000973",
+          "name": "佛塑科技",
+          "lianban": 1,
+          "sector": "锂电池",
+          "close": 13.68
+        },
+        {
+          "code": "002141",
+          "name": "贤丰控股",
+          "lianban": 1,
+          "sector": "通信",
+          "close": 6.72
+        },
+        {
+          "code": "002345",
+          "name": "潮宏基",
+          "lianban": 1,
+          "sector": "黄金",
+          "close": 11.65
+        },
+        {
+          "code": "000802",
+          "name": "北京文化",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 4.7
+        },
+        {
+          "code": "002739",
+          "name": "儒意电影",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 9.93
+        },
+        {
+          "code": "600984",
+          "name": "建设机械",
+          "lianban": 1,
+          "sector": "新型工业化",
+          "close": 4.49
+        },
+        {
+          "code": "002248",
+          "name": "华东数控",
+          "lianban": 1,
+          "sector": "新型工业化",
+          "close": 10.05
+        },
+        {
+          "code": "002153",
+          "name": "石基信息",
+          "lianban": 1,
+          "sector": "旅游",
+          "close": 9.04
+        },
+        {
+          "code": "000428",
+          "name": "华天酒店",
+          "lianban": 1,
+          "sector": "旅游",
+          "close": 4.32
+        },
+        {
+          "code": "600793",
+          "name": "宜宾纸业",
+          "lianban": 1,
+          "sector": "造纸",
+          "close": 15.66
+        },
+        {
+          "code": "600356",
+          "name": "恒丰纸业",
+          "lianban": 1,
+          "sector": "造纸",
+          "close": 9.06
+        },
+        {
+          "code": "001388",
+          "name": "信通电子",
+          "lianban": 1,
+          "sector": "物理AI",
+          "close": 25.29
+        },
+        {
+          "code": "002951",
+          "name": "金时科技",
+          "lianban": 1,
+          "sector": "元器件",
+          "close": 15.47
+        },
+        {
+          "code": "603797",
+          "name": "联泰环保",
+          "lianban": 1,
+          "sector": "环保",
+          "close": 4.59
+        },
+        {
+          "code": "002828",
+          "name": "贝肯能源",
+          "lianban": 1,
+          "sector": "石油石化",
+          "close": 12.87
+        },
+        {
+          "code": "603162",
+          "name": "海通发展",
+          "lianban": 1,
+          "sector": "航运",
+          "close": 12.68
+        },
+        {
+          "code": "601886",
+          "name": "江河集团",
+          "lianban": 1,
+          "sector": "光伏",
+          "close": 9.1
+        },
+        {
+          "code": "002827",
+          "name": "高争民爆",
+          "lianban": 1,
+          "sector": "股权转让",
+          "close": 59.58
+        },
+        {
+          "code": "603130",
+          "name": "云中马",
+          "lianban": 1,
+          "sector": "服装家纺",
+          "close": 44.33
+        },
+        {
+          "code": "002647",
+          "name": "仁东控股",
+          "lianban": 1,
+          "sector": "金融概念",
+          "close": 10.49
+        },
+        {
+          "code": "001222",
+          "name": "源飞宠物",
+          "lianban": 1,
+          "sector": "宠物经济",
+          "close": 15.41
+        },
+        {
+          "code": "002622",
+          "name": "皓宸医疗",
+          "lianban": 1,
+          "sector": "民营医院",
+          "close": 2.62
+        },
+        {
+          "code": "603161",
+          "name": "科华控股",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 15.49
+        },
+        {
+          "code": "601199",
+          "name": "江南水务",
+          "lianban": 1,
+          "sector": "水务",
+          "close": 6.06
+        },
+        {
+          "code": "600327",
+          "name": "大东方",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 3.94
+        },
+        {
+          "code": "001300",
+          "name": "三柏硕",
+          "lianban": 1,
+          "sector": "外贸",
+          "close": 11.57
+        },
+        {
+          "code": "301051",
+          "name": "信濠光电",
+          "lianban": 1,
+          "sector": "储能",
+          "close": 20.72
+        },
+        {
+          "code": "000656",
+          "name": "金科股份",
+          "lianban": 1,
+          "sector": "ST摘帽",
+          "close": 1.29
+        },
+        {
+          "code": "603580",
+          "name": "艾艾精工",
+          "lianban": 1,
+          "sector": "实控人变更",
+          "close": 59.21
+        }
+      ]
     }
   ]
 }
