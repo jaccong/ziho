@@ -69584,6 +69584,298 @@
           "close": 53.68
         }
       ]
+    },
+    {
+      "date": "2026-10-27",
+      "stocks": [
+        {
+          "code": "600838",
+          "name": "上海九百",
+          "lianban": 5,
+          "sector": "零售",
+          "close": 13.31
+        },
+        {
+          "code": "603028",
+          "name": "赛福天",
+          "lianban": 4,
+          "sector": "机器人概念",
+          "close": 10.33
+        },
+        {
+          "code": "603528",
+          "name": "多伦科技",
+          "lianban": 4,
+          "sector": "机器人概念",
+          "close": 9.85
+        },
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "lianban": 4,
+          "sector": "机器人概念",
+          "close": 16.01
+        },
+        {
+          "code": "002708",
+          "name": "光洋股份",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 17.22
+        },
+        {
+          "code": "002093",
+          "name": "国脉科技",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 7.93
+        },
+        {
+          "code": "001331",
+          "name": "胜通能源",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 38.52
+        },
+        {
+          "code": "605333",
+          "name": "沪光股份",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 19.91
+        },
+        {
+          "code": "001219",
+          "name": "青岛食品",
+          "lianban": 2,
+          "sector": "食品饮料",
+          "close": 14.98
+        },
+        {
+          "code": "001318",
+          "name": "阳光乳业",
+          "lianban": 2,
+          "sector": "食品饮料",
+          "close": 13.31
+        },
+        {
+          "code": "002820",
+          "name": "桂发祥",
+          "lianban": 2,
+          "sector": "食品饮料",
+          "close": 11.21
+        },
+        {
+          "code": "301314",
+          "name": "科瑞思",
+          "lianban": 2,
+          "sector": "并购重组",
+          "close": 67.37
+        },
+        {
+          "code": "301682",
+          "name": "宏明电子",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 102.1
+        },
+        {
+          "code": "002249",
+          "name": "大洋电机",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 7.7
+        },
+        {
+          "code": "301479",
+          "name": "弘景光电",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 56.15
+        },
+        {
+          "code": "300539",
+          "name": "横河精密",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 19.68
+        },
+        {
+          "code": "603370",
+          "name": "华新精科",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 30.81
+        },
+        {
+          "code": "600303",
+          "name": "曙光股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 3.11
+        },
+        {
+          "code": "603758",
+          "name": "秦安股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 10.73
+        },
+        {
+          "code": "601956",
+          "name": "东贝集团",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 5.54
+        },
+        {
+          "code": "001400",
+          "name": "江顺科技",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 80.28
+        },
+        {
+          "code": "603376",
+          "name": "大明电子",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 26.3
+        },
+        {
+          "code": "603813",
+          "name": "原尚股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 24.2
+        },
+        {
+          "code": "002823",
+          "name": "凯中精密",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 13.49
+        },
+        {
+          "code": "603037",
+          "name": "凯众股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 11.87
+        },
+        {
+          "code": "600626",
+          "name": "申达股份",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 3.94
+        },
+        {
+          "code": "600828",
+          "name": "茂业商业",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 4.47
+        },
+        {
+          "code": "002187",
+          "name": "广百股份",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 5.92
+        },
+        {
+          "code": "600785",
+          "name": "新华百货",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 13.9
+        },
+        {
+          "code": "601086",
+          "name": "国芳集团",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 12.62
+        },
+        {
+          "code": "002284",
+          "name": "亚太股份",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 9.67
+        },
+        {
+          "code": "603565",
+          "name": "中谷物流",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 12.58
+        },
+        {
+          "code": "002724",
+          "name": "海洋王",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 13.09
+        },
+        {
+          "code": "300504",
+          "name": "天邑股份",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 17.69
+        },
+        {
+          "code": "000058",
+          "name": "深赛格",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 7.87
+        },
+        {
+          "code": "002011",
+          "name": "盾安环境",
+          "lianban": 1,
+          "sector": "业绩增长",
+          "close": 11.37
+        },
+        {
+          "code": "601566",
+          "name": "九牧王",
+          "lianban": 1,
+          "sector": "服装家纺",
+          "close": 10.32
+        },
+        {
+          "code": "600715",
+          "name": "文投控股",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 1.87
+        },
+        {
+          "code": "000888",
+          "name": "峨眉山Ａ",
+          "lianban": 1,
+          "sector": "旅游",
+          "close": 10.1
+        },
+        {
+          "code": "002205",
+          "name": "国统股份",
+          "lianban": 1,
+          "sector": "基础建设",
+          "close": 11.4
+        },
+        {
+          "code": "002623",
+          "name": "亚玛顿",
+          "lianban": 1,
+          "sector": "光伏玻璃",
+          "close": 18.78
+        }
+      ]
     }
   ]
 }
