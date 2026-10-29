@@ -70364,6 +70364,284 @@
           "close": 11.77
         }
       ]
+    },
+    {
+      "date": "2026-10-29",
+      "stocks": [
+        {
+          "code": "002708",
+          "name": "光洋股份",
+          "lianban": 4,
+          "sector": "机器人概念",
+          "close": 20.83
+        },
+        {
+          "code": "001219",
+          "name": "青岛食品",
+          "lianban": 4,
+          "sector": "实控人变更",
+          "close": 18.13
+        },
+        {
+          "code": "601956",
+          "name": "东贝集团",
+          "lianban": 3,
+          "sector": "机器人概念",
+          "close": 6.7
+        },
+        {
+          "code": "600715",
+          "name": "文投控股",
+          "lianban": 3,
+          "sector": "AI应用",
+          "close": 2.27
+        },
+        {
+          "code": "603131",
+          "name": "上海沪工",
+          "lianban": 2,
+          "sector": "商业航天",
+          "close": 15.95
+        },
+        {
+          "code": "002526",
+          "name": "山东矿机",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 3.28
+        },
+        {
+          "code": "002943",
+          "name": "宇晶股份",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 27.62
+        },
+        {
+          "code": "603006",
+          "name": "联明股份",
+          "lianban": 2,
+          "sector": "三季报增长",
+          "close": 11.81
+        },
+        {
+          "code": "002862",
+          "name": "实丰文化",
+          "lianban": 2,
+          "sector": "AI玩具",
+          "close": 16.92
+        },
+        {
+          "code": "002172",
+          "name": "澳洋健康",
+          "lianban": 2,
+          "sector": "民营医院",
+          "close": 5.37
+        },
+        {
+          "code": "600261",
+          "name": "阳光照明",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 3.72
+        },
+        {
+          "code": "002565",
+          "name": "顺灏股份",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 8.14
+        },
+        {
+          "code": "002865",
+          "name": "钧达股份",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 38.62
+        },
+        {
+          "code": "301079",
+          "name": "邵阳液压",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 34.0
+        },
+        {
+          "code": "605598",
+          "name": "上海港湾",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 24.9
+        },
+        {
+          "code": "603703",
+          "name": "盛洋科技",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 10.86
+        },
+        {
+          "code": "600118",
+          "name": "中国卫星",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 55.9
+        },
+        {
+          "code": "600501",
+          "name": "航天晨光",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 16.89
+        },
+        {
+          "code": "002149",
+          "name": "西部材料",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 32.31
+        },
+        {
+          "code": "600592",
+          "name": "龙溪股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 17.41
+        },
+        {
+          "code": "003032",
+          "name": "传智教育",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 9.05
+        },
+        {
+          "code": "600643",
+          "name": "爱建集团",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 4.25
+        },
+        {
+          "code": "600428",
+          "name": "中远海特",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 11.39
+        },
+        {
+          "code": "000701",
+          "name": "厦门信达",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 5.62
+        },
+        {
+          "code": "002679",
+          "name": "福建金森",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 10.65
+        },
+        {
+          "code": "002531",
+          "name": "天顺风能",
+          "lianban": 1,
+          "sector": "三季报增长",
+          "close": 7.06
+        },
+        {
+          "code": "601188",
+          "name": "龙江交通",
+          "lianban": 1,
+          "sector": "冰雪产业",
+          "close": 3.5
+        },
+        {
+          "code": "000530",
+          "name": "冰山冷热",
+          "lianban": 1,
+          "sector": "冰雪产业",
+          "close": 8.23
+        },
+        {
+          "code": "600576",
+          "name": "祥源文旅",
+          "lianban": 1,
+          "sector": "冰雪产业",
+          "close": 5.38
+        },
+        {
+          "code": "605338",
+          "name": "巴比食品",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 18.98
+        },
+        {
+          "code": "603536",
+          "name": "惠发食品",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 10.44
+        },
+        {
+          "code": "605179",
+          "name": "一鸣食品",
+          "lianban": 1,
+          "sector": "食品饮料",
+          "close": 23.77
+        },
+        {
+          "code": "603103",
+          "name": "横店影视",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 17.44
+        },
+        {
+          "code": "600997",
+          "name": "开滦股份",
+          "lianban": 1,
+          "sector": "业绩增长",
+          "close": 5.39
+        },
+        {
+          "code": "002275",
+          "name": "桂林三金",
+          "lianban": 1,
+          "sector": "业绩增长",
+          "close": 13.62
+        },
+        {
+          "code": "002277",
+          "name": "友阿股份",
+          "lianban": 1,
+          "sector": "并购重组",
+          "close": 5.53
+        },
+        {
+          "code": "001225",
+          "name": "和泰机电",
+          "lianban": 1,
+          "sector": "专用设备",
+          "close": 32.92
+        },
+        {
+          "code": "603382",
+          "name": "海阳科技",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 19.87
+        },
+        {
+          "code": "002086",
+          "name": "东方海洋",
+          "lianban": 1,
+          "sector": "水产品",
+          "close": 2.57
+        }
+      ]
     }
   ]
 }
