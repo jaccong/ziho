@@ -75725,6 +75725,270 @@
           "close": 32.62
         }
       ]
+    },
+    {
+      "date": "2026-11-13",
+      "stocks": [
+        {
+          "code": "605255",
+          "name": "天普股份",
+          "lianban": 4,
+          "sector": "实控人变更",
+          "close": 73.82
+        },
+        {
+          "code": "002148",
+          "name": "北纬科技",
+          "lianban": 3,
+          "sector": "游戏",
+          "close": 7.95
+        },
+        {
+          "code": "603396",
+          "name": "金辰股份",
+          "lianban": 3,
+          "sector": "光伏",
+          "close": 35.32
+        },
+        {
+          "code": "001358",
+          "name": "兴欣新材",
+          "lianban": 2,
+          "sector": "芯片",
+          "close": 26.64
+        },
+        {
+          "code": "600467",
+          "name": "好当家",
+          "lianban": 2,
+          "sector": "农业",
+          "close": 2.73
+        },
+        {
+          "code": "002187",
+          "name": "广百股份",
+          "lianban": 2,
+          "sector": "零售",
+          "close": 6.97
+        },
+        {
+          "code": "002205",
+          "name": "国统股份",
+          "lianban": 2,
+          "sector": "基础建设",
+          "close": 12.93
+        },
+        {
+          "code": "600715",
+          "name": "文投控股",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 3.4
+        },
+        {
+          "code": "002905",
+          "name": "金逸影视",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 9.9
+        },
+        {
+          "code": "603103",
+          "name": "横店影视",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 19.31
+        },
+        {
+          "code": "000665",
+          "name": "湖北广电",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 4.58
+        },
+        {
+          "code": "600977",
+          "name": "中国电影",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 17.05
+        },
+        {
+          "code": "300528",
+          "name": "幸福蓝海",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 17.99
+        },
+        {
+          "code": "002739",
+          "name": "儒意电影",
+          "lianban": 1,
+          "sector": "文化传媒",
+          "close": 10.05
+        },
+        {
+          "code": "002685",
+          "name": "华东重机",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 5.54
+        },
+        {
+          "code": "600410",
+          "name": "华胜天成",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 14.3
+        },
+        {
+          "code": "002042",
+          "name": "华孚时尚",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 3.62
+        },
+        {
+          "code": "605318",
+          "name": "法狮龙",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 84.26
+        },
+        {
+          "code": "603166",
+          "name": "福达股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 11.84
+        },
+        {
+          "code": "603686",
+          "name": "福龙马",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 13.6
+        },
+        {
+          "code": "002520",
+          "name": "日发精机",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 7.7
+        },
+        {
+          "code": "603286",
+          "name": "日盈电子",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 64.91
+        },
+        {
+          "code": "002819",
+          "name": "东方中科",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 21.7
+        },
+        {
+          "code": "603928",
+          "name": "兴业股份",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 11.96
+        },
+        {
+          "code": "600651",
+          "name": "飞乐音响",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 5.18
+        },
+        {
+          "code": "002548",
+          "name": "金新农",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 3.83
+        },
+        {
+          "code": "002124",
+          "name": "天邦食品",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 2.31
+        },
+        {
+          "code": "002425",
+          "name": "凯撒文化",
+          "lianban": 1,
+          "sector": "游戏",
+          "close": 3.96
+        },
+        {
+          "code": "002748",
+          "name": "世龙实业",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 12.39
+        },
+        {
+          "code": "000819",
+          "name": "岳阳兴长",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 12.82
+        },
+        {
+          "code": "002853",
+          "name": "皮阿诺",
+          "lianban": 1,
+          "sector": "实控人变更",
+          "close": 21.77
+        },
+        {
+          "code": "603767",
+          "name": "中马传动",
+          "lianban": 1,
+          "sector": "减速器",
+          "close": 17.74
+        },
+        {
+          "code": "000766",
+          "name": "通化金马",
+          "lianban": 1,
+          "sector": "阿尔茨海默",
+          "close": 16.5
+        },
+        {
+          "code": "300237",
+          "name": "美晨科技",
+          "lianban": 1,
+          "sector": "ST摘帽",
+          "close": 3.26
+        },
+        {
+          "code": "001393",
+          "name": "维通利",
+          "lianban": 1,
+          "sector": "电气设备",
+          "close": 43.14
+        },
+        {
+          "code": "000595",
+          "name": "新能股份",
+          "lianban": 1,
+          "sector": "绿色电力",
+          "close": 5.53
+        },
+        {
+          "code": "603636",
+          "name": "南威软件",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 9.5
+        }
+      ]
     }
   ]
 }
