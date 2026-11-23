@@ -77127,6 +77127,1033 @@
           "close": 17.51
         }
       ]
+    },
+    {
+      "date": "2026-11-23",
+      "stocks": [
+        {
+          "code": "603324",
+          "name": "盛剑科技",
+          "lianban": 5,
+          "sector": "芯片",
+          "close": 30.48
+        },
+        {
+          "code": "002771",
+          "name": "真视通",
+          "lianban": 5,
+          "sector": "算力",
+          "close": 17.4
+        },
+        {
+          "code": "002579",
+          "name": "中京电子",
+          "lianban": 3,
+          "sector": "PCB概念",
+          "close": 14.73
+        },
+        {
+          "code": "603960",
+          "name": "克来机电",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 15.37
+        },
+        {
+          "code": "605018",
+          "name": "长华集团",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 11.29
+        },
+        {
+          "code": "301313",
+          "name": "凡拓数创",
+          "lianban": 2,
+          "sector": "机器人概念",
+          "close": 70.99
+        },
+        {
+          "code": "605577",
+          "name": "龙版传媒",
+          "lianban": 2,
+          "sector": "AI应用",
+          "close": 17.81
+        },
+        {
+          "code": "603004",
+          "name": "鼎龙科技",
+          "lianban": 2,
+          "sector": "芯片",
+          "close": 20.04
+        },
+        {
+          "code": "002642",
+          "name": "荣联科技",
+          "lianban": 2,
+          "sector": "算力",
+          "close": 7.99
+        },
+        {
+          "code": "002086",
+          "name": "东方海洋",
+          "lianban": 2,
+          "sector": "农业",
+          "close": 4.13
+        },
+        {
+          "code": "600467",
+          "name": "好当家",
+          "lianban": 2,
+          "sector": "农业",
+          "close": 3.15
+        },
+        {
+          "code": "002548",
+          "name": "金新农",
+          "lianban": 2,
+          "sector": "农业",
+          "close": 4.14
+        },
+        {
+          "code": "000530",
+          "name": "冰山冷热",
+          "lianban": 2,
+          "sector": "冰雪产业",
+          "close": 13.52
+        },
+        {
+          "code": "600327",
+          "name": "大东方",
+          "lianban": 2,
+          "sector": "零售",
+          "close": 5.31
+        },
+        {
+          "code": "002199",
+          "name": "东晶电子",
+          "lianban": 2,
+          "sector": "元器件",
+          "close": 10.4
+        },
+        {
+          "code": "000593",
+          "name": "德龙汇能",
+          "lianban": 2,
+          "sector": "天然气",
+          "close": 19.26
+        },
+        {
+          "code": "002164",
+          "name": "宁波东力",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 17.94
+        },
+        {
+          "code": "002708",
+          "name": "光洋股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 20.99
+        },
+        {
+          "code": "002931",
+          "name": "锋龙股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 42.46
+        },
+        {
+          "code": "603626",
+          "name": "科森科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 23.84
+        },
+        {
+          "code": "301575",
+          "name": "艾芬达",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 28.68
+        },
+        {
+          "code": "605488",
+          "name": "福莱新材",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 46.77
+        },
+        {
+          "code": "603666",
+          "name": "亿嘉和",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 25.36
+        },
+        {
+          "code": "603528",
+          "name": "多伦科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 6.2
+        },
+        {
+          "code": "301413",
+          "name": "安培龙",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 74.76
+        },
+        {
+          "code": "603179",
+          "name": "新泉股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 41.73
+        },
+        {
+          "code": "000026",
+          "name": "飞亚达",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 20.55
+        },
+        {
+          "code": "002009",
+          "name": "天奇股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 14.59
+        },
+        {
+          "code": "301000",
+          "name": "肇民科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 30.48
+        },
+        {
+          "code": "001283",
+          "name": "豪鹏科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 48.61
+        },
+        {
+          "code": "300508",
+          "name": "维宏股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 38.46
+        },
+        {
+          "code": "603119",
+          "name": "浙江荣泰",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 50.82
+        },
+        {
+          "code": "603040",
+          "name": "XD新坐标",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 33.08
+        },
+        {
+          "code": "002414",
+          "name": "高德红外",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 10.41
+        },
+        {
+          "code": "301261",
+          "name": "恒工精密",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 66.66
+        },
+        {
+          "code": "603920",
+          "name": "世运电路",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 34.76
+        },
+        {
+          "code": "002148",
+          "name": "北纬科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 11.07
+        },
+        {
+          "code": "003032",
+          "name": "传智教育",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 8.87
+        },
+        {
+          "code": "603037",
+          "name": "凯众股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 10.52
+        },
+        {
+          "code": "600980",
+          "name": "北矿科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 16.53
+        },
+        {
+          "code": "000700",
+          "name": "模塑科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 14.42
+        },
+        {
+          "code": "603236",
+          "name": "移远通信",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 81.25
+        },
+        {
+          "code": "603278",
+          "name": "大业股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 11.67
+        },
+        {
+          "code": "603662",
+          "name": "柯力传感",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 48.19
+        },
+        {
+          "code": "605288",
+          "name": "凯迪股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 58.37
+        },
+        {
+          "code": "920690",
+          "name": "捷众科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 22.67
+        },
+        {
+          "code": "688611",
+          "name": "杭州柯林",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 61.82
+        },
+        {
+          "code": "601689",
+          "name": "拓普集团",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 52.92
+        },
+        {
+          "code": "603667",
+          "name": "五洲新春",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 45.76
+        },
+        {
+          "code": "301502",
+          "name": "华阳智能",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 55.68
+        },
+        {
+          "code": "301252",
+          "name": "同星科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 35.4
+        },
+        {
+          "code": "603286",
+          "name": "日盈电子",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 48.94
+        },
+        {
+          "code": "688585",
+          "name": "上纬新材",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 178.99
+        },
+        {
+          "code": "003021",
+          "name": "兆威机电",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 84.51
+        },
+        {
+          "code": "002896",
+          "name": "中大力德",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 53.2
+        },
+        {
+          "code": "603728",
+          "name": "鸣志电器",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 48.97
+        },
+        {
+          "code": "603901",
+          "name": "永创智能",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 9.68
+        },
+        {
+          "code": "603009",
+          "name": "北特科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 45.21
+        },
+        {
+          "code": "301529",
+          "name": "福赛科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 154.8
+        },
+        {
+          "code": "603131",
+          "name": "上海沪工",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 13.01
+        },
+        {
+          "code": "000559",
+          "name": "万向钱潮",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 10.53
+        },
+        {
+          "code": "601177",
+          "name": "杭齿前进",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 12.31
+        },
+        {
+          "code": "002747",
+          "name": "埃斯顿",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 26.68
+        },
+        {
+          "code": "003028",
+          "name": "振邦智能",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 22.0
+        },
+        {
+          "code": "603337",
+          "name": "杰克科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 38.94
+        },
+        {
+          "code": "001331",
+          "name": "胜通能源",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 28.05
+        },
+        {
+          "code": "300007",
+          "name": "汉威科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 36.1
+        },
+        {
+          "code": "688836",
+          "name": "宇树科技",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 708.0
+        },
+        {
+          "code": "603051",
+          "name": "鹿山新材",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 20.9
+        },
+        {
+          "code": "002249",
+          "name": "大洋电机",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 6.53
+        },
+        {
+          "code": "603048",
+          "name": "浙江黎明",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 18.92
+        },
+        {
+          "code": "003033",
+          "name": "征和工业",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 57.37
+        },
+        {
+          "code": "603166",
+          "name": "福达股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 9.82
+        },
+        {
+          "code": "002046",
+          "name": "国机精工",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 30.56
+        },
+        {
+          "code": "001326",
+          "name": "联域股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 57.2
+        },
+        {
+          "code": "688286",
+          "name": "敏芯股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 53.48
+        },
+        {
+          "code": "002527",
+          "name": "新时达",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 9.45
+        },
+        {
+          "code": "603305",
+          "name": "旭升集团",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 11.36
+        },
+        {
+          "code": "000678",
+          "name": "襄阳轴承",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 18.68
+        },
+        {
+          "code": "603926",
+          "name": "铁流股份",
+          "lianban": 1,
+          "sector": "机器人概念",
+          "close": 14.85
+        },
+        {
+          "code": "301318",
+          "name": "维海德",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 21.53
+        },
+        {
+          "code": "601599",
+          "name": "浙文影业",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 3.65
+        },
+        {
+          "code": "605398",
+          "name": "新炬网络",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 20.25
+        },
+        {
+          "code": "603103",
+          "name": "横店影视",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 16.6
+        },
+        {
+          "code": "688069",
+          "name": "德林海",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 27.61
+        },
+        {
+          "code": "601595",
+          "name": "上海电影",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 32.52
+        },
+        {
+          "code": "002724",
+          "name": "海洋王",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 9.6
+        },
+        {
+          "code": "605287",
+          "name": "德才股份",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 34.97
+        },
+        {
+          "code": "002343",
+          "name": "慈文传媒",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 7.37
+        },
+        {
+          "code": "603533",
+          "name": "掌阅科技",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 24.94
+        },
+        {
+          "code": "001330",
+          "name": "博纳影业",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 5.43
+        },
+        {
+          "code": "603598",
+          "name": "引力传媒",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 18.24
+        },
+        {
+          "code": "001266",
+          "name": "宏英智能",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 29.46
+        },
+        {
+          "code": "688004",
+          "name": "博汇科技",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 31.2
+        },
+        {
+          "code": "301052",
+          "name": "果麦文化",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 44.16
+        },
+        {
+          "code": "301218",
+          "name": "华是科技",
+          "lianban": 1,
+          "sector": "AI应用",
+          "close": 87.0
+        },
+        {
+          "code": "001278",
+          "name": "一彬科技",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 13.43
+        },
+        {
+          "code": "603516",
+          "name": "淳中科技",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 45.38
+        },
+        {
+          "code": "001358",
+          "name": "兴欣新材",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 28.88
+        },
+        {
+          "code": "300721",
+          "name": "怡达股份",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 20.88
+        },
+        {
+          "code": "002584",
+          "name": "西陇科学",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 8.5
+        },
+        {
+          "code": "301265",
+          "name": "华新科技",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 24.79
+        },
+        {
+          "code": "603283",
+          "name": "赛腾股份",
+          "lianban": 1,
+          "sector": "芯片",
+          "close": 38.1
+        },
+        {
+          "code": "002685",
+          "name": "华东重机",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 8.14
+        },
+        {
+          "code": "001229",
+          "name": "魅视科技",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 27.71
+        },
+        {
+          "code": "002289",
+          "name": "宇顺电子",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 30.97
+        },
+        {
+          "code": "600156",
+          "name": "华升股份",
+          "lianban": 1,
+          "sector": "算力",
+          "close": 8.82
+        },
+        {
+          "code": "002815",
+          "name": "崇达技术",
+          "lianban": 1,
+          "sector": "PCB概念",
+          "close": 14.96
+        },
+        {
+          "code": "002913",
+          "name": "奥士康",
+          "lianban": 1,
+          "sector": "PCB概念",
+          "close": 60.59
+        },
+        {
+          "code": "603175",
+          "name": "超颖电子",
+          "lianban": 1,
+          "sector": "PCB概念",
+          "close": 89.32
+        },
+        {
+          "code": "300243",
+          "name": "瑞丰高材",
+          "lianban": 1,
+          "sector": "PCB概念",
+          "close": 13.98
+        },
+        {
+          "code": "002696",
+          "name": "百洋股份",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 7.34
+        },
+        {
+          "code": "603151",
+          "name": "邦基科技",
+          "lianban": 1,
+          "sector": "农业",
+          "close": 20.14
+        },
+        {
+          "code": "601188",
+          "name": "龙江交通",
+          "lianban": 1,
+          "sector": "冰雪产业",
+          "close": 4.61
+        },
+        {
+          "code": "301010",
+          "name": "晶雪节能",
+          "lianban": 1,
+          "sector": "冰雪产业",
+          "close": 23.06
+        },
+        {
+          "code": "002983",
+          "name": "芯瑞达",
+          "lianban": 1,
+          "sector": "AI眼镜",
+          "close": 24.98
+        },
+        {
+          "code": "002045",
+          "name": "国光电器",
+          "lianban": 1,
+          "sector": "AI眼镜",
+          "close": 8.83
+        },
+        {
+          "code": "603893",
+          "name": "瑞芯微",
+          "lianban": 1,
+          "sector": "AI眼镜",
+          "close": 202.88
+        },
+        {
+          "code": "300006",
+          "name": "莱美药业",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 8.74
+        },
+        {
+          "code": "603127",
+          "name": "昭衍新药",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 35.44
+        },
+        {
+          "code": "000766",
+          "name": "通化金马",
+          "lianban": 1,
+          "sector": "医药",
+          "close": 10.96
+        },
+        {
+          "code": "300829",
+          "name": "金丹科技",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 31.44
+        },
+        {
+          "code": "000819",
+          "name": "岳阳兴长",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 14.08
+        },
+        {
+          "code": "688203",
+          "name": "海正生材",
+          "lianban": 1,
+          "sector": "化工",
+          "close": 13.88
+        },
+        {
+          "code": "600838",
+          "name": "上海九百",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 8.34
+        },
+        {
+          "code": "600814",
+          "name": "杭州解百",
+          "lianban": 1,
+          "sector": "零售",
+          "close": 6.9
+        },
+        {
+          "code": "000636",
+          "name": "风华高科",
+          "lianban": 1,
+          "sector": "元器件",
+          "close": 28.99
+        },
+        {
+          "code": "002036",
+          "name": "联创电子",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 4.87
+        },
+        {
+          "code": "002703",
+          "name": "浙江世宝",
+          "lianban": 1,
+          "sector": "无人驾驶",
+          "close": 14.09
+        },
+        {
+          "code": "002172",
+          "name": "澳洋健康",
+          "lianban": 1,
+          "sector": "脑机接口",
+          "close": 5.13
+        },
+        {
+          "code": "002173",
+          "name": "创新医疗",
+          "lianban": 1,
+          "sector": "脑机接口",
+          "close": 14.39
+        },
+        {
+          "code": "001400",
+          "name": "江顺科技",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 66.66
+        },
+        {
+          "code": "002565",
+          "name": "顺灏股份",
+          "lianban": 1,
+          "sector": "商业航天",
+          "close": 8.09
+        },
+        {
+          "code": "603706",
+          "name": "东方环宇",
+          "lianban": 1,
+          "sector": "天然气",
+          "close": 23.69
+        },
+        {
+          "code": "002687",
+          "name": "乔治白",
+          "lianban": 1,
+          "sector": "服装家纺",
+          "close": 5.64
+        },
+        {
+          "code": "003041",
+          "name": "真爱美家",
+          "lianban": 1,
+          "sector": "服装家纺",
+          "close": 31.9
+        },
+        {
+          "code": "002122",
+          "name": "汇洲智能",
+          "lianban": 1,
+          "sector": "ST摘帽",
+          "close": 2.96
+        },
+        {
+          "code": "002242",
+          "name": "九阳股份",
+          "lianban": 1,
+          "sector": "家电",
+          "close": 31.86
+        },
+        {
+          "code": "688667",
+          "name": "菱电电控",
+          "lianban": 1,
+          "sector": "汽车零部件",
+          "close": 95.04
+        },
+        {
+          "code": "002655",
+          "name": "共达电声",
+          "lianban": 1,
+          "sector": "消费电子",
+          "close": 24.17
+        },
+        {
+          "code": "000711",
+          "name": "京蓝科技",
+          "lianban": 1,
+          "sector": "金属铟",
+          "close": 4.25
+        },
+        {
+          "code": "600103",
+          "name": "青山纸业",
+          "lianban": 1,
+          "sector": "光模块",
+          "close": 3.53
+        },
+        {
+          "code": "002623",
+          "name": "亚玛顿",
+          "lianban": 1,
+          "sector": "实控人变更",
+          "close": 18.57
+        },
+        {
+          "code": "001360",
+          "name": "南矿集团",
+          "lianban": 1,
+          "sector": "黄金",
+          "close": 17.49
+        },
+        {
+          "code": "300703",
+          "name": "创源股份",
+          "lianban": 1,
+          "sector": "文创产品",
+          "close": 12.36
+        },
+        {
+          "code": "002248",
+          "name": "华东数控",
+          "lianban": 1,
+          "sector": "工业母机",
+          "close": 8.44
+        }
+      ]
     }
   ]
 }
